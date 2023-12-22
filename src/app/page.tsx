@@ -1,5 +1,9 @@
-import Image from 'next/image'
+import CharacterSearch from '@/components/CharacterSearch'
 
 export default function Home() {
-  return <main>dfdf</main>
+  return (
+    <main>
+      <CharacterSearch />
+    </main>
+  )
 }
