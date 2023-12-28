@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import characterServerState from '@/lib/redux/features/characterServerState'
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: { characterServerState },
   })
 }
 
