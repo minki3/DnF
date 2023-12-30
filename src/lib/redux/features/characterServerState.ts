@@ -5,7 +5,7 @@ interface CharacterServerStateType {
 }
 
 const initialState = {
-  value: { server: '', id: '' },
+  value: { server: 'all', id: '' },
 } as CharacterServerStateType
 
 export const characterServerState = createSlice({
