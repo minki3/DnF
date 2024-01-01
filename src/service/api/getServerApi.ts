@@ -1,10 +1,13 @@
 export const getServerApi = async () => {
-  const API_KEY = process.env.REACT_APP_APIKEY
-
-  const response = await fetch(
-    `https://api.neople.co.kr/df/servers?apikey=${API_KEY}`,
-    { method: 'GET' },
-  )
-  const data = await response.json()
-  return data
+  const API_KEY = process.env.NEXT_PUBLIC_REACT_APP_APIKEY
+  try {
+    const response = await fetch(
+      `https://api.neople.co.kr/df/servers?apikey=${API_KEY}`,
+      { method: 'GET' },
+    )
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 }

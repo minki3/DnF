@@ -2,15 +2,19 @@ export const getCharacterInformation = async (
   server: string | null,
   nickname: string | null,
 ) => {
-  const API_KEY = process.env.REACT_APP_APIKEY
+  const API_KEY = process.env.NEXT_PUBLIC_REACT_APP_APIKEY
+  console.log('1', API_KEY)
+  try {
+    console.log('2', API_KEY)
+    const response = await fetch(
+      `https://api.neople.co.kr/df/servers/${server}/characters?characterName=${nickname}&apikey=${API_KEY}`,
+      { method: 'GET', mode: 'no-cors' },
+    )
 
-  const response = await fetch(
-    `https://api.neople.co.kr/df/servers/${server}/characters?characterName=${nickname}&apikey=${process.env.REACT_APP_APIKEY}`,
-    { method: 'GET' },
-  )
+    const data = await response.json()
 
-  const data = await response.json()
-  console.log(API_KEY)
-
-  return data
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 }

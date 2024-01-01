@@ -14,9 +14,7 @@ export default async function SearchPage() {
   const characterData = await getCharacterInformation(
     serverQuery,
     nicknameQuery,
-  ).catch((error) => {
-    console.log(error)
-  })
-  console.log('1111', characterData)
+  )
+  console.log('data', characterData)
   return <div></div>
 }

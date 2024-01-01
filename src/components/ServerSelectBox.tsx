@@ -20,6 +20,7 @@ export default function ServerSelectBox({ serverData }: Props) {
     dispatch(serverChange(server))
   }
   console.log(userData)
+
   return (
     <>
       <ul className="py-2">
