@@ -1,20 +1,17 @@
-'use client'
 import React from 'react'
-import { useSearchParams } from 'next/navigation'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 
-export default async function SearchPage() {
-  const queryparams = useSearchParams()
-  const serverQuery = queryparams.get('server')
-  const nicknameQuery = queryparams.get('nickname')
+interface Props {
+  searchParams: { server: string; nickname: string }
+}
 
-  console.log(serverQuery)
-  console.log(nicknameQuery)
+export default async function SearchPage({ searchParams }: Props) {
+  console.log(searchParams)
 
   const characterData = await getCharacterInformation(
-    serverQuery,
-    nicknameQuery,
+    searchParams.server,
+    searchParams.nickname,
   )
-  console.log('data', characterData)
+  console.log('1', characterData)
   return <div></div>
 }

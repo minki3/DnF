@@ -8,7 +8,7 @@ export const getCharacterInformation = async (
     console.log('2', API_KEY)
     const response = await fetch(
       `https://api.neople.co.kr/df/servers/${server}/characters?characterName=${nickname}&apikey=${API_KEY}`,
-      { method: 'GET', mode: 'no-cors' },
+      { method: 'GET' },
     )
 
     const data = await response.json()
