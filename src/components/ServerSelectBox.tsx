@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { ServerDataType } from '@/service/types/type'
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
 import { serverChange } from '@/lib/redux/features/characterServerState'
+import NickNameInput from '@/components/NickNameInput'
+import Link from 'next/link'
 
 interface Props {
   serverData: ServerDataType
@@ -18,6 +20,7 @@ export default function ServerSelectBox({ serverData }: Props) {
     dispatch(serverChange(server))
   }
   console.log(userData)
+
   return (
     <>
       <ul className="py-2">
@@ -36,6 +39,15 @@ export default function ServerSelectBox({ serverData }: Props) {
           )
         })}
       </ul>
+      <NickNameInput />
+      <Link
+        href={{
+          pathname: '/search',
+          query: { server: userData.server, nickname: userData.id },
+        }}
+      >
+        검색
+      </Link>
     </>
   )
 }
