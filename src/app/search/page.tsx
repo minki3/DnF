@@ -16,10 +16,14 @@ export default async function SearchPage({ searchParams }: Props) {
   )
 
   console.log('1', characterData)
+
   return (
     <div>
       <ServerSelectBox serverData={getServerData} />
-      <CharacterSearchResult charactersData={characterData} />
+      <CharacterSearchResult
+        charactersData={characterData}
+        serverData={getServerData}
+      />
     </div>
   )
 }

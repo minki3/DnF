@@ -1,5 +1,3 @@
-import CharactersNotFound from '@/components/CharactersNotFound'
-
 export const getCharacterInformation = async (
   server: string | null,
   nickname: string | null,

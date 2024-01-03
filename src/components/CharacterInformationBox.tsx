@@ -1,14 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
-import { CharacterInformationType, ServerDataType } from '@/service/types/type'
-import { getServerApi } from '@/service/api/getServerApi'
+import { CharacterInformationType, ServerType } from '@/service/types/type'
 
 interface Props {
   characterData: CharacterInformationType
+  server: ServerType[]
 }
 
 export default async function CharacterInformationBox({
   characterData,
+  server,
 }: Props) {
   const {
     serverId,
@@ -21,13 +22,6 @@ export default async function CharacterInformationBox({
     jobGrowName,
     fame,
   } = characterData
-  const serverData = await getServerApi()
-
-  const filterServer = serverData.rows.filter(
-    (data: { serverId: string; serverName: string }) => {
-      return data.serverId === serverId
-    },
-  )
 
   return (
     <li className=" border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer">
@@ -39,7 +33,7 @@ export default async function CharacterInformationBox({
       />
 
       <span className=" font-bold">{characterName}</span>
-      <span className=" font-thin text-sm">{filterServer[0].serverName}</span>
+      <span className=" font-thin text-sm">{server[0].serverName}</span>
       <span className=" text-sm font-thin">
         LV : <span className=" font-bold">{level}</span>
       </span>

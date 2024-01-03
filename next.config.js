@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['img-api.neople.co.kr'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img-api.neople.co.kr',
+      },
+    ],
   },
 }
 // next.config.js
