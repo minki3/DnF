@@ -1,14 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
-import { CharacterInformationType, ServerDataType } from '@/service/types/type'
-import { getServerApi } from '@/service/api/getServerApi'
+import { CharacterInformationType, ServerType } from '@/service/types/type'
+import Link from 'next/link'
 
 interface Props {
   characterData: CharacterInformationType
+  server: ServerType[]
 }
 
 export default async function CharacterInformationBox({
   characterData,
+  server,
 }: Props) {
   const {
     serverId,
@@ -21,31 +23,38 @@ export default async function CharacterInformationBox({
     jobGrowName,
     fame,
   } = characterData
-  const serverData = await getServerApi()
-
-  const filterServer = serverData.rows.filter(
-    (data: { serverId: string; serverName: string }) => {
-      return data.serverId === serverId
-    },
-  )
 
   return (
-    <li className=" border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer">
-      <Image
-        src={`https://img-api.neople.co.kr/df/servers/${serverId}/characters/${characterId}`}
-        alt="character"
-        width={300}
-        height={300}
-      />
+    <Link
+      href={{
+        pathname: `/character`,
+        query: { server: serverId, Id: characterId },
+      }}
+    >
+      <li className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer">
+        <Image
+          src={`https://img-api.neople.co.kr/df/servers/${serverId}/characters/${characterId}`}
+          alt="character"
+          width={300}
+          height={300}
+          className="border"
+        />
 
-      <span className=" font-bold">{characterName}</span>
-      <span className=" font-thin text-sm">{filterServer[0].serverName}</span>
-      <span className=" text-sm font-thin">
-        LV : <span className=" font-bold">{level}</span>
-      </span>
-      <span className=" font-thin">
-        명성치 : <span className="font-bold">{fame}</span>
-      </span>
-    </li>
+        <span className=" font-bold">{characterName}</span>
+        <span className=" font-thin text-sm">{server[0].serverName}</span>
+        <span className=" text-sm font-thin">
+          LV : <span className=" font-bold">{level}</span>
+        </span>
+        <span className="font-bold">
+          <span className="font-thin">직업 : </span>
+          {jobGrowName}
+        </span>
+        {fame !== null && (
+          <span className=" font-thin">
+            명성치 :<span className="font-bold">{fame}</span>
+          </span>
+        )}
+      </li>
+    </Link>
   )
 }

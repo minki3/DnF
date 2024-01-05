@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ServerSelectBox({ serverData }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
   const dispatch = useAppDispatch()
 
   const userData = useAppSelector((state) => state.characterServerState.value)

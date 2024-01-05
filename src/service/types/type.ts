@@ -1,5 +1,5 @@
 export interface ServerDataType {
-  rows: { serverId: string; serverName: string }[]
+  rows: Array<ServerType>
 }
 
 export interface CharactersDataType {
@@ -15,4 +15,22 @@ export interface CharacterInformationType {
   jobName: string
   jobGrowName: string
   fame: number
+}
+
+export interface ServerType {
+  serverId: string
+  serverName: string
+}
+
+export interface CharacterInformationDetailType {
+  characterId: string
+  characterName: string
+  level: number
+  jobId: string
+  jobGrowId: string
+  jobName: string
+  jobGrowName: string
+  adventureName: string
+  guildId: string
+  guildName: string
 }
