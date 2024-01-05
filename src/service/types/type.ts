@@ -21,4 +21,16 @@ export interface ServerType {
   serverId: string
   serverName: string
 }
-;[]
+
+export interface CharacterInformationDetailType {
+  characterId: string
+  characterName: string
+  level: number
+  jobId: string
+  jobGrowId: string
+  jobName: string
+  jobGrowName: string
+  adventureName: string
+  guildId: string
+  guildName: string
+}

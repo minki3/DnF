@@ -2,7 +2,6 @@ import React from 'react'
 import { CharactersDataType, ServerDataType } from '@/service/types/type'
 import CharactersNotFound from '@/components/CharactersNotFound'
 import CharacterInformationBox from '@/components/CharacterInformationBox'
-import { getServerApi } from '@/service/api/getServerApi'
 
 interface Props {
   charactersData: CharactersDataType
@@ -22,6 +21,7 @@ export default async function CharacterSearchResult({
       },
     )
   }
+
   return (
     <ul className="grid grid-cols-4 gap-4 p-4">
       {charactersData.rows.map((data, idx) => {
