@@ -1,9 +1,9 @@
 import React from 'react'
-import { CharacterInformationDetailType } from '@/service/types/type'
+import { CharacterInformationStatusType } from '@/service/types/type'
 import Image from 'next/image'
 
 interface Props {
-  characterInformationDetail: CharacterInformationDetailType
+  characterInformationDetail: CharacterInformationStatusType
   server: string
 }
 

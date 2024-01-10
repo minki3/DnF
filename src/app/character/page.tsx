@@ -2,6 +2,7 @@ import React from 'react'
 import { getCharacterMoreInformation } from '@/service/api/getCharacterMoreInformation'
 import CharacterInformation from '@/components/CharacterInformation'
 import CharacterModal from '@/components/CharacterModal'
+import { getCharacterEquipment } from '@/service/api/getCharacterEquipment'
 
 interface Props {
   searchParams: { server: string; Id: string }
@@ -13,6 +14,11 @@ export default async function CharacterPage({ searchParams }: Props) {
     searchParams.Id,
     'status',
   )
+  const characterAvatar = await getCharacterEquipment(
+    searchParams.server,
+    searchParams.Id,
+    'avatar',
+  )
 
   return (
     <>
@@ -20,7 +26,10 @@ export default async function CharacterPage({ searchParams }: Props) {
         characterInformationDeatil={characterInformationDetail}
         server={searchParams.server}
       />
-      <CharacterModal characterStatus={characterInformationDetail.status} />
+      <CharacterModal
+        characterStatus={characterInformationDetail.status}
+        characterAvatar={characterAvatar.avatar}
+      />
     </>
   )
 }
