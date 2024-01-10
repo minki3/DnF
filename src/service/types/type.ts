@@ -22,6 +22,12 @@ export interface ServerType {
   serverName: string
 }
 
+export interface CharacterInformationStatusType
+  extends CharacterInformationDetailType {
+  buff: Array<BuffType>
+  status: Array<CharacterStatusType>
+}
+
 export interface CharacterInformationDetailType {
   characterId: string
   characterName: string
@@ -33,8 +39,6 @@ export interface CharacterInformationDetailType {
   adventureName: string
   guildId: string
   guildName: string
-  buff: Array<BuffType>
-  status: Array<CharacterStatusType>
 }
 
 export interface BuffType {
@@ -50,4 +54,31 @@ export interface BuffStatusType {
 export interface CharacterStatusType {
   name: string
   value: number
+}
+
+export interface CharacterAvatarType extends CharacterInformationDetailType {
+  avatar: Array<AvatarType>
+}
+
+export interface AvatarType {
+  slotId: string
+  slotName: string
+  itemId: string
+  itemName: string
+  itemRarity: string
+  optionAbility: string
+  clone: CloneAvatarType
+  emblems: Array<Emblems>
+}
+
+export interface CloneAvatarType {
+  itemId: string
+  itemName: string
+}
+
+export interface Emblems {
+  slotNo: number
+  slotColor: string
+  itemName: string
+  itemRarity: string
 }

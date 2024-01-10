@@ -49,10 +49,12 @@ export default async function CharacterInformationBox({
           <span className="font-thin">직업 : </span>
           {jobGrowName}
         </span>
-        {fame !== null && (
+        {fame !== null ? (
           <span className=" font-thin">
             명성치 :<span className="font-bold">{fame}</span>
           </span>
+        ) : (
+          <br />
         )}
       </li>
     </Link>
