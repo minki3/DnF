@@ -11,16 +11,16 @@ export default async function CharacterPage({ searchParams }: Props) {
   const characterInformationDetail = await getCharacterMoreInformation(
     searchParams.server,
     searchParams.Id,
-    '',
+    'status',
   )
-  console.log(characterInformationDetail)
+
   return (
     <>
       <CharacterInformation
         characterInformationDeatil={characterInformationDetail}
         server={searchParams.server}
       />
-      <CharacterModal />
+      <CharacterModal characterStatus={characterInformationDetail.status} />
     </>
   )
 }

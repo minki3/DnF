@@ -31,7 +31,6 @@ export default function CharacterInformationHeader({
           alt="characterImage"
           width={350}
           height={350}
-          className="border"
         />
         <div className="flex  justify-center flex-col items-start tracking-[1px] leading-[3rem]">
           <span>
@@ -40,6 +39,10 @@ export default function CharacterInformationHeader({
           <span>
             <span className=" font-thin">닉네임 : </span>
             {characterName}
+          </span>
+          <span>
+            <span className=" font-thin">레 벨 : </span>
+            {level}
           </span>
           <span>
             <span className=" font-thin">직 업 : </span>

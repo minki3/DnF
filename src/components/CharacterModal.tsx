@@ -1,7 +1,16 @@
 'use client'
 import React, { useState } from 'react'
+import { CharacterStatusType } from '@/service/types/type'
+import CharacterStatusPage from '@/components/CharacterStatusPage'
+import CharacterEquipmentPage from '@/components/CharacterEquipmentPage'
+import CharacterAvatarPage from '@/components/CharacterAvatarPage'
+import CharacterCreaturePage from '@/components/CharacterCreaturePage'
 
-export default function CharacterModal() {
+interface Props {
+  characterStatus: CharacterStatusType[]
+}
+
+export default function CharacterModal({ characterStatus }: Props) {
   const [open, setOpen] = useState('status')
 
   return (
@@ -13,7 +22,7 @@ export default function CharacterModal() {
             open === 'status' && 'font-bold border-b-2 border-black pb-4'
           }`}
         >
-          스텟
+          스 텟
         </div>
         <div
           onClick={() => setOpen('equipment')}
@@ -21,7 +30,7 @@ export default function CharacterModal() {
             open === 'equipment' && 'font-bold border-b-2 border-black pb-4'
           }`}
         >
-          장비
+          장 비
         </div>
         <div
           onClick={() => setOpen('avatar')}
@@ -40,7 +49,15 @@ export default function CharacterModal() {
           크리쳐
         </div>
       </div>
-      <div className="border-b"></div>
+      <div className="border-b" />
+      <div className="p-4">
+        {open === 'status' && (
+          <CharacterStatusPage characterStatus={characterStatus} />
+        )}
+        {open === 'equipment' && <CharacterEquipmentPage />}
+        {open === 'avatar' && <CharacterAvatarPage />}
+        {open === 'creature' && <CharacterCreaturePage />}
+      </div>
     </>
   )
 }

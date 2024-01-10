@@ -33,4 +33,21 @@ export interface CharacterInformationDetailType {
   adventureName: string
   guildId: string
   guildName: string
+  buff: Array<BuffType>
+  status: Array<CharacterStatusType>
+}
+
+export interface BuffType {
+  name: string
+  level?: number
+  status: Array<BuffStatusType>
+}
+
+export interface BuffStatusType {
+  name: string
+  value: number
+}
+export interface CharacterStatusType {
+  name: string
+  value: number
 }

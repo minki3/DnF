@@ -1,7 +1,7 @@
 import { CharacterInformationDetailType } from '@/service/types/type'
 import React from 'react'
-import Image from 'next/image'
 import CharacterInformationHeader from '@/components/CharacterInformationHeader'
+
 interface Props {
   characterInformationDeatil: CharacterInformationDetailType
   server: string
