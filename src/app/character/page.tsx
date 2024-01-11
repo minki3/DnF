@@ -19,6 +19,11 @@ export default async function CharacterPage({ searchParams }: Props) {
     searchParams.Id,
     'avatar',
   )
+  const characterCreature = await getCharacterEquipment(
+    searchParams.server,
+    searchParams.Id,
+    'creature',
+  )
 
   return (
     <>
@@ -29,6 +34,7 @@ export default async function CharacterPage({ searchParams }: Props) {
       <CharacterModal
         characterStatus={characterInformationDetail.status}
         characterAvatar={characterAvatar.avatar}
+        characterCreature={characterCreature.creature}
       />
     </>
   )
