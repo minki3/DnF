@@ -60,6 +60,10 @@ export interface CharacterAvatarType extends CharacterInformationDetailType {
   avatar: Array<AvatarType>
 }
 
+export interface CharacterCreatureType extends CharacterInformationDetailType {
+  creature: CreatureType
+}
+
 export interface AvatarType {
   slotId: string
   slotName: string
@@ -68,7 +72,7 @@ export interface AvatarType {
   itemRarity: string
   optionAbility: string
   clone: CloneAvatarType
-  emblems: Array<Emblems>
+  emblems: Array<EmblemsType>
 }
 
 export interface CloneAvatarType {
@@ -76,9 +80,25 @@ export interface CloneAvatarType {
   itemName: string
 }
 
-export interface Emblems {
+export interface EmblemsType {
   slotNo: number
   slotColor: string
   itemName: string
+  itemRarity: string
+}
+
+export interface CreatureType {
+  itemId: string
+  itemName: string
+  itemRarity: string
+  clone: CloneAvatarType
+  artifact: Array<artifactType>
+}
+
+export interface artifactType {
+  slotColor: string
+  itemId: string
+  itemName: string
+  itemAvailableLevel: number
   itemRarity: string
 }

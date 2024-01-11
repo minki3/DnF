@@ -1,26 +1,12 @@
 import React from 'react'
 import { AvatarType } from '@/service/types/type'
+import { rarityColor } from '@/service/utils/rarityColor'
 
 interface Props {
   characterAvatar: AvatarType[]
 }
 
 export default function CharacterAvatarPage({ characterAvatar }: Props) {
-  console.log('1', characterAvatar[4].emblems)
-
-  const avatarTypeColor = (rarity: string) => {
-    switch (rarity) {
-      case '레어':
-        return 'text-purple-400'
-      case '커먼':
-        return 'text-amber-500'
-      case '유니크':
-        return 'text-pink-400'
-      case '레전더리':
-        return 'text-yellow-500'
-    }
-  }
-
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
@@ -37,9 +23,7 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
             <li key={idx} className="border flex p-6 items-center">
               <div className="basis-1/4">{slotName}</div>
               <div
-                className={`${avatarTypeColor(
-                  itemRarity,
-                )} basis-1/4 flex flex-col`}
+                className={`${rarityColor(itemRarity)} basis-1/4 flex flex-col`}
               >
                 {itemName}
                 <span className=" text-black">{clone.itemName}</span>
@@ -50,7 +34,7 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
                   return (
                     <span
                       key={idx}
-                      className={`${avatarTypeColor(itemRarity)} text-[12px]`}
+                      className={`${rarityColor(itemRarity)}  text-[12px]`}
                     >
                       {itemName}
                     </span>

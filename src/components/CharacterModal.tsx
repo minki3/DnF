@@ -1,6 +1,10 @@
 'use client'
 import React, { useState } from 'react'
-import { AvatarType, CharacterStatusType } from '@/service/types/type'
+import {
+  AvatarType,
+  CharacterStatusType,
+  CreatureType,
+} from '@/service/types/type'
 import CharacterStatusPage from '@/components/CharacterStatusPage'
 import CharacterEquipmentPage from '@/components/CharacterEquipmentPage'
 import CharacterAvatarPage from '@/components/CharacterAvatarPage'
@@ -9,11 +13,13 @@ import CharacterCreaturePage from '@/components/CharacterCreaturePage'
 interface Props {
   characterStatus: CharacterStatusType[]
   characterAvatar: AvatarType[]
+  characterCreature: CreatureType
 }
 
 export default function CharacterModal({
   characterStatus,
   characterAvatar,
+  characterCreature,
 }: Props) {
   const [open, setOpen] = useState('status')
 
@@ -62,7 +68,9 @@ export default function CharacterModal({
         {open === 'avatar' && (
           <CharacterAvatarPage characterAvatar={characterAvatar} />
         )}
-        {open === 'creature' && <CharacterCreaturePage />}
+        {open === 'creature' && (
+          <CharacterCreaturePage characterCreature={characterCreature} />
+        )}
       </div>
     </>
   )

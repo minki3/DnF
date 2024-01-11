@@ -1,5 +1,37 @@
+import { CreatureType } from '@/service/types/type'
+import { rarityColor } from '@/service/utils/rarityColor'
 import React from 'react'
 
-export default function CharacterCreaturePage() {
-  return <div>4</div>
+interface Props {
+  characterCreature: CreatureType
+}
+
+export default function CharacterCreaturePage({ characterCreature }: Props) {
+  const { itemName, itemRarity, clone, artifact } = characterCreature
+  return (
+    <div className="flex justify-center cursor-default">
+      <ul className=" basis-4/5 ">
+        <li className="flex border p-6 items-center">
+          <span className="basis-1/3">크리처</span>
+          <div className="flex flex-col basis-1/3">
+            <span className={`${rarityColor(itemRarity)}`}>{itemName}</span>
+            <span>{clone.itemName}</span>
+          </div>
+          <ul className="flex flex-col basis-1/3 text-end">
+            {artifact.map((item, idx) => {
+              const { itemName, itemRarity } = item
+              return (
+                <li
+                  key={idx}
+                  className={`${rarityColor(itemRarity)} text-[12px]`}
+                >
+                  {itemName}
+                </li>
+              )
+            })}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  )
 }
