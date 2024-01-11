@@ -64,6 +64,9 @@ export interface CharacterCreatureType extends CharacterInformationDetailType {
   creature: CreatureType
 }
 
+export interface CharacterEquipmentType
+  extends CharacterInformationDetailType {}
+
 export interface AvatarType {
   slotId: string
   slotName: string
@@ -92,13 +95,50 @@ export interface CreatureType {
   itemName: string
   itemRarity: string
   clone: CloneAvatarType
-  artifact: Array<artifactType>
+  artifact: Array<ArtifactType>
 }
 
-export interface artifactType {
+export interface ArtifactType {
   slotColor: string
   itemId: string
   itemName: string
   itemAvailableLevel: number
+  itemRarity: string
+}
+
+export interface EquipmentType {
+  slotId: string
+  slotName: string
+  itemId: string
+  itemName: string
+  itemTypeId: string
+  itemType: string
+  itemTypeDetailId: string
+  itemTypeDeatil: string
+  itemAvailableLevel: number
+  itemRarity: string
+  setItemId: null
+  setItemName: null
+  reinforce: number
+  itemGradeName: string
+  enchant: { status: Array<CharacterStatusType> }
+  amplificationName: string
+  refine: number
+  fixedOption: FixedOptionType
+  skin: WeaponSkinType
+}
+
+export interface FixedOptionType {
+  damage: number
+  buff: number
+  level: number
+  expRate: number
+  explain: string
+  explainDetail: string
+}
+
+export interface WeaponSkinType {
+  itemId: string
+  itemName: string
   itemRarity: string
 }

@@ -4,6 +4,7 @@ import {
   AvatarType,
   CharacterStatusType,
   CreatureType,
+  EquipmentType,
 } from '@/service/types/type'
 import CharacterStatusPage from '@/components/CharacterStatusPage'
 import CharacterEquipmentPage from '@/components/CharacterEquipmentPage'
@@ -14,12 +15,14 @@ interface Props {
   characterStatus: CharacterStatusType[]
   characterAvatar: AvatarType[]
   characterCreature: CreatureType
+  characterEquipment: EquipmentType[]
 }
 
 export default function CharacterModal({
   characterStatus,
   characterAvatar,
   characterCreature,
+  characterEquipment,
 }: Props) {
   const [open, setOpen] = useState('status')
 
@@ -64,7 +67,9 @@ export default function CharacterModal({
         {open === 'status' && (
           <CharacterStatusPage characterStatus={characterStatus} />
         )}
-        {open === 'equipment' && <CharacterEquipmentPage />}
+        {open === 'equipment' && (
+          <CharacterEquipmentPage characterEquipment={characterEquipment} />
+        )}
         {open === 'avatar' && (
           <CharacterAvatarPage characterAvatar={characterAvatar} />
         )}

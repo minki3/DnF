@@ -24,6 +24,11 @@ export default async function CharacterPage({ searchParams }: Props) {
     searchParams.Id,
     'creature',
   )
+  const characterEquipment = await getCharacterEquipment(
+    searchParams.server,
+    searchParams.Id,
+    'equipment',
+  )
 
   return (
     <>
@@ -35,6 +40,7 @@ export default async function CharacterPage({ searchParams }: Props) {
         characterStatus={characterInformationDetail.status}
         characterAvatar={characterAvatar.avatar}
         characterCreature={characterCreature.creature}
+        characterEquipment={characterEquipment.equipment}
       />
     </>
   )
