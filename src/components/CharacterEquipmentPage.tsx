@@ -1,19 +1,20 @@
+import ItemOption from '@/components/ItemOption'
 import { EquipmentType } from '@/service/types/type'
 import { rarityColor } from '@/service/utils/rarityColor'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 interface Props {
   characterEquipment: EquipmentType[]
 }
 
 export default function CharacterEquipmentPage({ characterEquipment }: Props) {
-  const [open, setIsOpen] = useState(false)
-  const contaionRef: any = useRef()
-  console.log(open)
+  const [hover, setHover] = useState<string | null>('')
+  console.log(hover)
 
-  const handleState = () => {
-    setIsOpen((prev) => !prev)
+  const handleHover = (item: string) => {
+    setHover(item)
   }
+
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
@@ -27,18 +28,20 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
             amplificationName,
             slotName,
             fixedOption,
+            customOption,
           } = item
           return (
             <li key={idx} className="p-6 border flex items-center">
               <span className=" basis-1/4">{slotName}</span>
               <div
                 className="flex flex-col basis-1/4 "
-                ref={(e) => {
-                  contaionRef
+                onMouseEnter={() => {
+                  handleHover(itemName)
                 }}
-                onMouseLeave={handleState}
+                onMouseLeave={() => {
+                  handleHover('')
+                }}
               >
-                <div onMouseEnter={handleState} />
                 <span className={`${rarityColor(itemRarity)}`}>
                   {reinforce !== 0 && (
                     <span
@@ -52,10 +55,16 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                     </span>
                   )}
                   &nbsp;{itemName}
-                  {open && <div>open</div>}
                 </span>
                 <span className="text-[12px]">{skin && skin.itemName}</span>
+                {hover === itemName && itemName && (
+                  <ItemOption
+                    fixedOption={fixedOption}
+                    customOption={customOption}
+                  />
+                )}
               </div>
+
               <div className="basis-1/4 text-end">
                 {fixedOption && <span>Lv {fixedOption.level}</span>}
               </div>

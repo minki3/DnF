@@ -124,8 +124,9 @@ export interface EquipmentType {
   enchant: { status: Array<CharacterStatusType> }
   amplificationName: string
   refine: number
-  fixedOption: FixedOptionType
-  skin: WeaponSkinType
+  fixedOption?: FixedOptionType
+  skin?: WeaponSkinType
+  customOption?: CustomOptionType
 }
 
 export interface FixedOptionType {
@@ -141,4 +142,17 @@ export interface WeaponSkinType {
   itemId: string
   itemName: string
   itemRarity: string
+}
+
+export interface CustomOptionType {
+  buff: number
+  damage: number
+  expRate: number
+  level: number
+  options: Array<CustomOptionDeatilType>
+}
+export interface CustomOptionDeatilType {
+  explain: string
+  explainDetail: string
+  transfer: boolean
 }
