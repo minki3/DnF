@@ -7,7 +7,14 @@ interface Props {
 }
 
 export default function CharacterCreaturePage({ characterCreature }: Props) {
+  if (characterCreature === null)
+    return (
+      <div className=" flex justify-center items-center p-10">
+        정보를 찾을 수없습니다.
+      </div>
+    )
   const { itemName, itemRarity, clone, artifact } = characterCreature
+
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
