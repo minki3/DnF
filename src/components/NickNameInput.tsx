@@ -15,6 +15,7 @@ export default function NickNameInput() {
       onChange={(e) => {
         NickNameHandler(e)
       }}
+      className="border border-black rounded-lg p-2 mr-4"
     />
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 import { getServerApi } from '@/service/api/getServerApi'
-import ServerSelectBox from '@/components/ServerSelectBox'
 import CharacterSearchResult from '@/components/CharacterSearchResult'
+import CharactersNotFound from '@/components/CharactersNotFound'
 
 interface Props {
   searchParams: { server: string; nickname: string }
@@ -14,10 +14,10 @@ export default async function SearchPage({ searchParams }: Props) {
     searchParams.server,
     searchParams.nickname,
   )
+  if (searchParams.nickname === '') return <CharactersNotFound />
 
   return (
     <div>
-      <ServerSelectBox serverData={getServerData} />
       <CharacterSearchResult
         charactersData={characterData}
         serverData={getServerData}
