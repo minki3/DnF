@@ -9,10 +9,11 @@ import readingGlasses from '@public/icon/readingGlasses.png'
 import Image from 'next/image'
 
 interface Props {
-  serverData: ServerDataType
+  serverData?: ServerDataType
+  large?: 'large'
 }
 
-export default function ServerSelectBox({ serverData }: Props) {
+export default function ServerSelectBox({ serverData, large }: Props) {
   const dispatch = useAppDispatch()
 
   const userData = useAppSelector((state) => state.characterServerState.value)
@@ -21,36 +22,33 @@ export default function ServerSelectBox({ serverData }: Props) {
     const selectedServer = event.target.value
     dispatch(serverChange(selectedServer))
   }
-  console.log(userData)
 
   return (
     <div className="flex items-center">
-      <select
-        className="  border-black rounded-lg mr-4 p-2"
-        onChange={serverHandler}
-      >
+      <select className=" rounded-lg  p-[10px] mr-2" onChange={serverHandler}>
         <option value="all">서버선택</option>
-        {serverData.rows.map((item) => {
-          const { serverId, serverName } = item
-          return (
-            <option
-              key={serverId}
-              value={serverId}
-              className="text-sm hover:cursor-pointer"
-            >
-              {serverName}
-            </option>
-          )
-        })}
+        {serverData &&
+          serverData.rows.map((item) => {
+            const { serverId, serverName } = item
+            return (
+              <option
+                key={serverId}
+                value={serverId}
+                className="text-sm hover:cursor-pointer"
+              >
+                {serverName}
+              </option>
+            )
+          })}
       </select>
-      <NickNameInput />
+      <NickNameInput large={large} />
       <Link
         href={{
           pathname: '/search',
           query: { server: userData.server, nickname: userData.id },
         }}
       >
-        <div className="w-[40px] h-[40px] border border-black rounded-lg flex justify-center items-center">
+        <div className="w-[40px] h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">
           <Image
             className=" hover:cursor-pointer"
             src={readingGlasses}

@@ -1,9 +1,13 @@
-import CharacterSearch from '@/components/CharacterSearch'
+import ServerSelectBox from '@/components/ServerSelectBox'
+import { getServerApi } from '@/service/api/getServerApi'
+import MainPageLogo from '@/components/MainPageLogo'
 
-export default function Home() {
+export default async function Home() {
+  const serverData = await getServerApi()
   return (
-    <>
-      <CharacterSearch />
-    </>
+    <div className="flex justify-center items-center flex-col ">
+      <MainPageLogo />
+      <ServerSelectBox serverData={serverData} large="large" />
+    </div>
   )
 }
