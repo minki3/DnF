@@ -9,7 +9,6 @@ interface Props {
 
 export default function CharacterEquipmentPage({ characterEquipment }: Props) {
   const [hover, setHover] = useState<string | null>('')
-  console.log(hover)
 
   const handleHover = (item: string) => {
     setHover(item)

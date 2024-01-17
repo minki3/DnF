@@ -3,7 +3,11 @@ import React from 'react'
 import { useAppDispatch } from '@/lib/redux/hooks'
 import { idChange } from '@/lib/redux/features/characterServerState'
 
-export default function NickNameInput() {
+interface Props {
+  large?: 'large'
+}
+
+export default function NickNameInput({ large }: Props) {
   const dispatch = useAppDispatch()
 
   const NickNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +19,7 @@ export default function NickNameInput() {
       onChange={(e) => {
         NickNameHandler(e)
       }}
-      className="border border-black rounded-lg p-2 mr-4"
+      className={`${large && 'w-[300px]'} border rounded-lg p-2 `}
     />
   )
 }
