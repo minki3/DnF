@@ -3,6 +3,7 @@ import React from 'react'
 import { ServerDataType } from '@/service/types/type'
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
 import { serverChange } from '@/lib/redux/features/characterServerState'
+import { saveSearch } from '@/lib/redux/features/beforeSearchState'
 import NickNameInput from '@/components/NickNameInput'
 import Link from 'next/link'
 import readingGlasses from '@public/icon/readingGlasses.png'
@@ -16,13 +17,16 @@ interface Props {
 export default function ServerSelectBox({ serverData, large }: Props) {
   const dispatch = useAppDispatch()
 
-  const userData = useAppSelector((state) => state.characterServerState.value)
+  const userData = useAppSelector((state) => state.serverSave.value)
+
+  const saveServer = useAppSelector((state) => state.beforeSave.value)
 
   const serverHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedServer = event.target.value
     dispatch(serverChange(selectedServer))
   }
 
+  console.log(saveServer)
   return (
     <div className="flex items-center">
       <select className=" rounded-lg  p-[10px] mr-2" onChange={serverHandler}>
@@ -46,6 +50,9 @@ export default function ServerSelectBox({ serverData, large }: Props) {
         href={{
           pathname: '/search',
           query: { server: userData.server, nickname: userData.id },
+        }}
+        onClick={() => {
+          dispatch(saveSearch({ server: userData.server, id: userData.id }))
         }}
       >
         <div className="w-[40px] h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">

@@ -3,6 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import StoreProvider from '@/app/StoreProvider'
 import NavigationBar from '@/components/NavigationBar'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+import { makeStore } from '@/lib/redux/store'
+
+// export const persistor = persistStore(makeStore())
 
 const inter = Inter({ subsets: ['latin'] })
 
