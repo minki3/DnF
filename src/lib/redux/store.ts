@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import characterServerState from '@/lib/redux/features/characterServerState'
 import beforeSearchState from '@/lib/redux/features/beforeSearchState'
+import createMigrate from 'redux-persist/es/createMigrate'
+import { BeforeSearchStateType } from '@/lib/redux/features/beforeSearchState'
+// import { migrations } from '@/lib/redux/features/beforeSearchState'
 import {
-  persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,
@@ -11,26 +13,34 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
-import storage from '@/lib/redux/features/customStorage'
+import storage from '@/lib/redux/customStorage'
+
 const reducers = combineReducers({
+  serverIdSave: characterServerState,
   saveSearch: beforeSearchState,
 })
 
-const presistConfig = {
-  key: 'root',
-  storage,
+const migrations = {
+  0: (state: BeforeSearchStateType) => {
+    return state.value.map((item: { server: string; id: string }) => {
+      return [...state.value, { server: item.server, id: item.id }]
+    })
+  },
 }
 
-const presistedReducer = persistReducer(presistConfig, reducers)
+const rootPersistConfig = {
+  key: 'root',
+  storage,
+  version: 0,
+  migrate: createMigrate(migrations as any, { debug: true }),
 
-const rootReducer = combineReducers({
-  serverSave: persistReducer(presistConfig, characterServerState),
-  beforeSave: persistReducer(presistConfig, beforeSearchState),
-})
+  blacklist: ['serverIdSave'], // storage에 저장하고 싶지 않은 state
+}
 
+const persistedReducer = persistReducer(rootPersistConfig, reducers)
 export const makeStore = () => {
   return configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {

@@ -17,9 +17,9 @@ interface Props {
 export default function ServerSelectBox({ serverData, large }: Props) {
   const dispatch = useAppDispatch()
 
-  const userData = useAppSelector((state) => state.serverSave.value)
+  const userData = useAppSelector((state) => state.serverIdSave)
 
-  const saveServer = useAppSelector((state) => state.beforeSave.value)
+  const saveServer = useAppSelector((state) => state.saveSearch.value)
 
   const serverHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedServer = event.target.value
@@ -49,10 +49,15 @@ export default function ServerSelectBox({ serverData, large }: Props) {
       <Link
         href={{
           pathname: '/search',
-          query: { server: userData.server, nickname: userData.id },
+          query: { server: userData.value.server, nickname: userData.value.id },
         }}
         onClick={() => {
-          dispatch(saveSearch({ server: userData.server, id: userData.id }))
+          dispatch(
+            saveSearch({
+              server: userData.value.server,
+              id: userData.value.id,
+            }),
+          )
         }}
       >
         <div className="w-[40px] h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">

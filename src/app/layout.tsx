@@ -7,8 +7,6 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import { makeStore } from '@/lib/redux/store'
 
-// export const persistor = persistStore(makeStore())
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
