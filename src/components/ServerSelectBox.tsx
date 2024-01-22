@@ -19,14 +19,11 @@ export default function ServerSelectBox({ serverData, large }: Props) {
 
   const userData = useAppSelector((state) => state.serverIdSave)
 
-  const saveServer = useAppSelector((state) => state.saveSearch.value)
-
   const serverHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedServer = event.target.value
     dispatch(serverChange(selectedServer))
   }
 
-  console.log(saveServer)
   return (
     <div className="flex items-center">
       <select className=" rounded-lg  p-[10px] mr-2" onChange={serverHandler}>
