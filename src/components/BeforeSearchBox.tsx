@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks'
 import { deleteSearch } from '@/lib/redux/features/beforeSearchState'
+import Link from 'next/link'
 
 export default function BeforeSearchBox() {
   const saveServer = useAppSelector((state) => state.saveSearch)
@@ -65,7 +66,18 @@ export default function BeforeSearchBox() {
                     {serverName(item.server)}
                   </span>
                 </span>
-                <span className=" basis-1/3 text-center">{item.id}</span>
+                <Link
+                  href={{
+                    pathname: '/search',
+                    query: {
+                      server: item.server,
+                      nickname: item.id,
+                    },
+                  }}
+                  className=" basis-1/3 text-center"
+                >
+                  <span className=" basis-1/3 text-center">{item.id}</span>
+                </Link>
                 <span className=" basis-1/3 text-end">
                   <span
                     onClick={() => {
