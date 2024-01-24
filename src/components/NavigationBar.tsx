@@ -4,11 +4,13 @@ import ServerSelectBox from '@/components/ServerSelectBox'
 import { getServerApiCsr } from '@/service/api/getServerApi'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import SearchOrRank from '@/components/SearchOrRankNav'
 
 export default function NavigationBar() {
   const [serverData, setServerData] = useState()
   const pathUrl = usePathname()
   const location = '/'
+  const rank = '/rank'
 
   useEffect(() => {
     getServerApiCsr().then((res) => {
@@ -16,7 +18,9 @@ export default function NavigationBar() {
     })
   }, [])
 
-  if (pathUrl === location) return null
+  if (pathUrl === location || pathUrl === rank) {
+    return <SearchOrRank />
+  }
   return (
     <nav className="fixed border-b-2 border-black  w-full p-8 flex bg-white">
       <Link
