@@ -5,6 +5,12 @@ export interface ServerDataType {
 export interface CharactersDataType {
   rows: Array<CharacterInformationType>
 }
+
+export interface CharacterRankType {
+  fame: FameMinMaxType
+  rows: Array<CharacterInformationType>
+}
+
 export interface CharacterInformationType {
   serverId: string
   characterId: string
@@ -155,4 +161,9 @@ export interface CustomOptionDeatilType {
   explain: string
   explainDetail: string
   transfer: boolean
+}
+
+export interface FameMinMaxType {
+  min: number
+  max: number
 }

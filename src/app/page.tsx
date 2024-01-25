@@ -5,6 +5,7 @@ import BeforeSearchBox from '@/components/BeforeSearchBox'
 
 export default async function Home() {
   const serverData = await getServerApi()
+
   return (
     <div className="flex justify-center items-center flex-col ">
       <MainPageLogo />
