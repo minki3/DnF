@@ -6,27 +6,30 @@ interface Props {
 }
 
 export default function CharacterStatusPage({ characterStatus }: Props) {
+  console.log(characterStatus)
   return (
     <div className="flex justify-center">
       <ul className=" basis-1/3">
-        {characterStatus.map((item, idx) => {
-          const { name } = item
-          return (
-            <li className="border p-4" key={idx}>
-              {name}
-            </li>
-          )
-        })}
+        {characterStatus &&
+          characterStatus.map((item, idx) => {
+            const { name } = item
+            return (
+              <li className="border p-4" key={idx}>
+                {name}
+              </li>
+            )
+          })}
       </ul>
       <ul className="basis-1/2">
-        {characterStatus.map((item, idx) => {
-          const { value } = item
-          return (
-            <div className="border p-4" key={idx}>
-              {value}
-            </div>
-          )
-        })}
+        {characterStatus &&
+          characterStatus.map((item, idx) => {
+            const { value } = item
+            return (
+              <div className="border p-4" key={idx}>
+                {value}
+              </div>
+            )
+          })}
       </ul>
     </div>
   )
