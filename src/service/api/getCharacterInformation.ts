@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 export const getCharacterInformation = async (
   server: string | null,
   nickname: string | null,

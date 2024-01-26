@@ -25,17 +25,16 @@ export const getCharacterFameRankCsr = async (
   maxFame: number,
   minFame: number,
 ) => {
-  const API_KEY = process.env.NEXT_PUBLIC_REACT_APP_APIKEY
-
   try {
     const response = await fetch(
-      `/df/servers/${server}/characters-fame?&isBuff=${isBuff}&maxFame=${maxFame}&minFame=${minFame}&jobId=${jobId}&jobGrowId=${growJobId}&limit=${100}&apikey=${API_KEY}`,
+      `/rank/df/servers/${server}/characters-fame?&isBuff=${isBuff}&maxFame=${maxFame}&minFame=${minFame}&jobId=${jobId}&jobGrowId=${growJobId}&limit=${100}`,
       {
         method: 'GET',
       },
     )
 
     const data = response.json()
+    console.log(data)
     return data
   } catch (e) {
     console.log(e)

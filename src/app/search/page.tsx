@@ -14,7 +14,7 @@ export default async function SearchPage({ searchParams }: Props) {
     searchParams.server,
     searchParams.nickname,
   )
-  if (searchParams.nickname === '') return <CharactersNotFound />
+  if (characterData.error) return <CharactersNotFound />
 
   return (
     <div>

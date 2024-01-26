@@ -3,6 +3,7 @@ import { getCharacterMoreInformation } from '@/service/api/getCharacterMoreInfor
 import CharacterInformation from '@/components/CharacterInformation'
 import CharacterModal from '@/components/CharacterModal'
 import { getCharacterEquipment } from '@/service/api/getCharacterEquipment'
+import CharactersNotFound from '@/components/CharactersNotFound'
 
 interface Props {
   searchParams: { server: string; Id: string }
@@ -29,6 +30,8 @@ export default async function CharacterPage({ searchParams }: Props) {
     searchParams.Id,
     'equipment',
   )
+
+  if (characterInformationDetail.error) return <CharactersNotFound />
 
   return (
     <>
