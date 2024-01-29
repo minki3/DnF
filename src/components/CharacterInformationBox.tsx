@@ -38,6 +38,7 @@ export default async function CharacterInformationBox({
           width={300}
           height={300}
           className="border"
+          priority
         />
 
         <span className=" font-bold">{characterName}</span>

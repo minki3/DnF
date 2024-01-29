@@ -27,7 +27,7 @@ export const getCharacterFameRankCsr = async (
 ) => {
   try {
     const response = await fetch(
-      `/rank/df/servers/${server}/characters-fame?&isBuff=${isBuff}&maxFame=${maxFame}&minFame=${minFame}&jobId=${jobId}&jobGrowId=${growJobId}&limit=${100}`,
+      `/fame?isBuff=${isBuff}&maxFame=${maxFame}&minFame=${minFame}&jobId=${jobId}&jobGrowId=${growJobId}&limit=${100}`,
       {
         method: 'GET',
       },
