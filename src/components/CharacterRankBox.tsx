@@ -42,8 +42,10 @@ export default function CharacterRankBox({ characterData, idx, page }: Props) {
         <Image
           src={`https://img-api.neople.co.kr/df/servers/${serverId}/characters/${characterId}`}
           alt="character"
-          width={250}
-          height={250}
+          width={300}
+          height={300}
+          className="w-[70%]"
+          priority
         />
       </div>
       <div className="flex flex-col basis-1/4">

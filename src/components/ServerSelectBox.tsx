@@ -2,7 +2,7 @@
 import React from 'react'
 import { ServerDataType } from '@/service/types/type'
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
-import { serverChange } from '@/lib/redux/features/characterServerState'
+import { reset, serverChange } from '@/lib/redux/features/characterServerState'
 import { saveSearch } from '@/lib/redux/features/beforeSearchState'
 import NickNameInput from '@/components/NickNameInput'
 import Link from 'next/link'
@@ -18,6 +18,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
   const dispatch = useAppDispatch()
 
   const userData = useAppSelector((state) => state.serverIdSave)
+  console.log(userData)
 
   const serverHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedServer = event.target.value
@@ -55,6 +56,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
               id: userData.value.id,
             }),
           )
+          dispatch(reset())
         }}
       >
         <div className="w-[40px] h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">
