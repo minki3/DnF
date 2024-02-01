@@ -14,14 +14,16 @@ export default async function SearchPage({ searchParams }: Props) {
     searchParams.server,
     searchParams.nickname,
   )
-  if (characterData.error) return <CharactersNotFound />
+
+  if (characterData.error || characterData.rows.length === 0)
+    return <CharactersNotFound />
 
   return (
-    <div>
+    <>
       <CharacterSearchResult
         charactersData={characterData}
         serverData={getServerData}
       />
-    </div>
+    </>
   )
 }
