@@ -29,6 +29,7 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
             fixedOption,
             customOption,
           } = item
+          console.log(itemName, customOption)
           return (
             <li key={idx} className="p-6 border flex items-center">
               <span className=" basis-1/4">{slotName}</span>
@@ -45,9 +46,9 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                   {reinforce !== 0 && (
                     <span
                       className={`${
-                        amplificationName &&
-                        amplificationName.includes('차원') &&
-                        ' text-pink-400'
+                        amplificationName && amplificationName.includes('차원')
+                          ? ' text-pink-400'
+                          : 'text-black'
                       }`}
                     >
                       +{reinforce}
@@ -64,8 +65,15 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                 )}
               </div>
 
-              <div className="basis-1/4 text-end">
+              <div
+                className={`${
+                  itemName.includes('仙 :') &&
+                  (fixedOption?.level === 40 || customOption?.level === 40) &&
+                  'text-pink-400'
+                } basis-1/4 text-end`}
+              >
                 {fixedOption && <span>Lv {fixedOption.level}</span>}
+                {customOption && <span>Lv {customOption.level}</span>}
               </div>
               <div className=" basis-1/4 flex flex-col text-[12px] text-end">
                 {enchant &&

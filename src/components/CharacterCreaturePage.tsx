@@ -22,7 +22,7 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
           <span className="basis-1/3">크리처</span>
           <div className="flex flex-col basis-1/3">
             <span className={`${rarityColor(itemRarity)}`}>{itemName}</span>
-            <span>{clone.itemName}</span>
+            <span className="text-[13px]">{clone.itemName}</span>
           </div>
           <ul className="flex flex-col basis-1/3 text-end">
             {artifact.map((item, idx) => {

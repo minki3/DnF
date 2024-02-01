@@ -193,7 +193,6 @@ export default function RankPage() {
       fame.maxFame,
       fame.minFame,
     ).then((res) => {
-      console.log(res)
       setData(res)
     })
   }, [job, fame])
