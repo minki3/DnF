@@ -18,6 +18,13 @@ interface Props {
   characterEquipment: EquipmentType[]
 }
 
+const Categories = [
+  { category: '스 텟', state: 'status' },
+  { category: '장 비', state: 'equipment' },
+  { category: '아바타', state: 'avatar' },
+  { category: '크리처', state: 'creature' },
+]
+
 export default function CharacterModal({
   characterStatus,
   characterAvatar,
@@ -29,38 +36,18 @@ export default function CharacterModal({
   return (
     <>
       <div className="flex gap-[20px] text-lg cursor-pointer justify-center mt-7 ">
-        <div
-          onClick={() => setOpen('status')}
-          className={`${
-            open === 'status' && 'font-bold border-b-2 border-black pb-4'
-          }`}
-        >
-          스 텟
-        </div>
-        <div
-          onClick={() => setOpen('equipment')}
-          className={`${
-            open === 'equipment' && 'font-bold border-b-2 border-black pb-4'
-          }`}
-        >
-          장 비
-        </div>
-        <div
-          onClick={() => setOpen('avatar')}
-          className={`${
-            open === 'avatar' && 'font-bold border-b-2 border-black pb-4'
-          }`}
-        >
-          아바타
-        </div>
-        <div
-          onClick={() => setOpen('creature')}
-          className={`${
-            open === 'creature' && 'font-bold border-b-2 border-black pb-4'
-          }`}
-        >
-          크리쳐
-        </div>
+        {Categories.map((item) => {
+          return (
+            <div
+              onClick={() => setOpen(item.state)}
+              className={`${
+                open === item.state && 'font-bold border-b-2 border-black pb-4'
+              }`}
+            >
+              {item.category}
+            </div>
+          )
+        })}
       </div>
       <div className="border-b" />
       <div className="p-4">
