@@ -6,7 +6,6 @@ interface Props {
 }
 
 export default function CharacterStatusPage({ characterStatus }: Props) {
-  console.log(characterStatus)
   return (
     <div className="flex justify-center">
       <ul className=" basis-1/3">

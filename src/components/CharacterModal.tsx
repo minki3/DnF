@@ -5,22 +5,26 @@ import {
   CharacterStatusType,
   CreatureType,
   EquipmentType,
+  CharacterBuffEquipmentType,
 } from '@/service/types/type'
 import CharacterStatusPage from '@/components/CharacterStatusPage'
 import CharacterEquipmentPage from '@/components/CharacterEquipmentPage'
 import CharacterAvatarPage from '@/components/CharacterAvatarPage'
 import CharacterCreaturePage from '@/components/CharacterCreaturePage'
+import CharacterBuffStatus from '@/components/CharacterBuffStatus'
 
 interface Props {
   characterStatus: CharacterStatusType[]
   characterAvatar: AvatarType[]
   characterCreature: CreatureType
   characterEquipment: EquipmentType[]
+  characterBuffEquipment: CharacterBuffEquipmentType
 }
 
 const Categories = [
   { category: '스 텟', state: 'status' },
   { category: '장 비', state: 'equipment' },
+  { category: '자버프', state: 'buff' },
   { category: '아바타', state: 'avatar' },
   { category: '크리처', state: 'creature' },
 ]
@@ -30,6 +34,7 @@ export default function CharacterModal({
   characterAvatar,
   characterCreature,
   characterEquipment,
+  characterBuffEquipment,
 }: Props) {
   const [open, setOpen] = useState('status')
 
@@ -62,6 +67,11 @@ export default function CharacterModal({
         )}
         {open === 'creature' && (
           <CharacterCreaturePage characterCreature={characterCreature} />
+        )}
+        {open === 'buff' && (
+          <CharacterBuffStatus
+            characterBuffEquipment={characterBuffEquipment}
+          />
         )}
       </div>
     </>

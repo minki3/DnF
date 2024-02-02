@@ -34,6 +34,21 @@ export interface CharacterInformationStatusType
   status: Array<CharacterStatusType>
 }
 
+export interface CharacterBuffEquipmentType
+  extends CharacterInformationDetailType {
+  buff: { skillInfo: JobBuffType; equipment: Array<EquipmentType> }
+}
+
+export interface JobBuffType {
+  skillId: string
+  name: string
+  option: {
+    level: number
+    desc: string
+    values: string[]
+  }
+}
+
 export interface CharacterInformationDetailType {
   characterId: string
   characterName: string
@@ -123,11 +138,11 @@ export interface EquipmentType {
   itemTypeDeatil: string
   itemAvailableLevel: number
   itemRarity: string
-  setItemId: null
-  setItemName: null
+  setItemId: null | string
+  setItemName: null | string
   reinforce: number
   itemGradeName: string
-  enchant: { status: Array<CharacterStatusType> }
+  enchant?: { status: Array<CharacterStatusType> }
   amplificationName: string
   refine: number
   fixedOption?: FixedOptionType
