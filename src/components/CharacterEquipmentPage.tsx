@@ -1,8 +1,8 @@
 import ItemOption from '@/components/ItemOption'
 import { EquipmentType } from '@/service/types/type'
-import { rarityColor } from '@/service/utils/rarityColor'
+// import { rarityColor } from '@/service/utils/rarityColor'
 import React, { useState } from 'react'
-
+import Image from 'next/image'
 interface Props {
   characterEquipment: EquipmentType[]
 }
@@ -14,6 +14,24 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
     setHover(item)
   }
 
+  const rarityColor = (rarity: string) => {
+    switch (rarity) {
+      case '언커먼':
+        return 'text-neutral-400'
+      case '커먼':
+        return 'text-teal-400'
+      case '레어':
+        return 'text-purple-400'
+      case '유니크':
+        return 'text-pink-400'
+      case '레전더리':
+        return 'text-orange-400'
+      case '에픽':
+        return 'text-yellow-400'
+      default:
+        return ''
+    }
+  }
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
@@ -28,6 +46,7 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
             slotName,
             fixedOption,
             customOption,
+            itemId,
           } = item
           console.log(itemName, customOption)
           return (
@@ -42,21 +61,34 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                   handleHover('')
                 }}
               >
-                <span className={`${rarityColor(itemRarity)}`}>
-                  {reinforce !== 0 && (
-                    <span
-                      className={`${
-                        amplificationName && amplificationName.includes('차원')
-                          ? ' text-pink-400'
-                          : 'text-black'
-                      }`}
-                    >
-                      +{reinforce}
+                <div className="flex items-center">
+                  <Image
+                    src={`https://img-api.neople.co.kr/df/items/${itemId}`}
+                    alt="itemImage"
+                    width={50}
+                    height={50}
+                  />
+                  <div className="flex flex-col pl-2">
+                    <span className={`${rarityColor(itemRarity)}`}>
+                      {reinforce !== 0 && (
+                        <span
+                          className={`${
+                            amplificationName &&
+                            amplificationName.includes('차원')
+                              ? ' text-pink-400'
+                              : 'text-black'
+                          }`}
+                        >
+                          +{reinforce}
+                        </span>
+                      )}
+                      &nbsp;{itemName}
                     </span>
-                  )}
-                  &nbsp;{itemName}
-                </span>
-                <span className="text-[12px]">{skin && skin.itemName}</span>
+                    {skin && (
+                      <span className="text-[12px]">{skin.itemName}</span>
+                    )}
+                  </div>
+                </div>
                 {hover === itemName && itemName && (
                   <ItemOption
                     fixedOption={fixedOption}

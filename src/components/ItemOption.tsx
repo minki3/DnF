@@ -17,7 +17,7 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
   console.log('1111', fixedOption?.explainDetail)
   console.log('2222', customOptions)
   return (
-    <div className="border px-4 pt-4">
+    <div className="border px-4 pt-4 mt-2">
       {fixedOption && (
         <ul className="">
           {options &&
