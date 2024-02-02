@@ -176,7 +176,7 @@ export default function RankPage() {
   const [limit, setLimit] = useState<number>(10) //페이지 당 보여질 갯수
   const [page, setPage] = useState<number>(1) //현재 페이지
   const offset = (page - 1) * limit
-  console.log(data)
+
   const nextPage = (number: number) => {
     setPage(page + number)
   }

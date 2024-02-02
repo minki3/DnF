@@ -13,6 +13,7 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
         정보를 찾을 수없습니다.
       </div>
     )
+
   const { itemName, itemRarity, clone, artifact } = characterCreature
 
   return (

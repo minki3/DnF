@@ -1,15 +1,20 @@
 import React from 'react'
-import { CharacterInformationStatusType } from '@/service/types/type'
+import {
+  CharacterInformationStatusType,
+  JobBuffType,
+} from '@/service/types/type'
 import Image from 'next/image'
 
 interface Props {
   characterInformationDetail: CharacterInformationStatusType
   server: string
+  characterBuffStatus: JobBuffType
 }
 
 export default function CharacterInformationHeader({
   characterInformationDetail,
   server,
+  characterBuffStatus,
 }: Props) {
   const {
     characterId,
@@ -51,6 +56,12 @@ export default function CharacterInformationHeader({
           <span>
             <span className=" font-thin">길드명 : </span>
             {guildName}
+          </span>
+          <span className="flex flex-col">
+            <span className=" font-thin">버프 정보 :</span>
+            <span>{characterBuffStatus.name}</span>
+            <span> +{characterBuffStatus.option.level}</span>
+            <span>{characterBuffStatus.option.values[1]}%</span>
           </span>
         </div>
       </div>

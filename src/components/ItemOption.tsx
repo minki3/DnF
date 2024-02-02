@@ -14,7 +14,8 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
   const customOptions = customOption?.options.map((item) => {
     return item.explainDetail.split('\n')
   })
-  console.log(customOption)
+  console.log('1111', fixedOption?.explainDetail)
+  console.log('2222', customOptions)
   return (
     <div className="border px-4 pt-4">
       {fixedOption && (
@@ -39,15 +40,13 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
             customOptions.map((items, idx) => {
               return (
                 <li key={idx} className="flex flex-col">
-                  <span>-</span>
+                  <span className="text-[13px] font-bold">
+                    • {`${idx + 1}옵션 `}
+                  </span>
                   {items.map((item, idx) => {
                     return (
                       <div className="text-[11px] pb-4" key={idx}>
-                        {item.includes('-') ? (
-                          <span className="pl-2">{item}</span>
-                        ) : (
-                          <span>{item}</span>
-                        )}
+                        <span>{item}</span>
                       </div>
                     )
                   })}
