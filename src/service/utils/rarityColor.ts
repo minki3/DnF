@@ -16,3 +16,5 @@ export const rarityColor = (rarity: string) => {
       return ''
   }
 }
+
+// 적용이 안되는 이유 찾아야함..
