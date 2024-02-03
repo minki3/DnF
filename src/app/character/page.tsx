@@ -36,7 +36,7 @@ export default async function CharacterPage({ searchParams }: Props) {
     searchParams.Id,
     'equipment',
   )
-  console.log(characterBuffEquipment.skill.buff)
+
   if (characterInformationDetail.error) return <CharactersNotFound />
 
   return (
@@ -44,7 +44,7 @@ export default async function CharacterPage({ searchParams }: Props) {
       <CharacterInformation
         characterInformationDeatil={characterInformationDetail}
         server={searchParams.server}
-        characterBuffStatus={characterBuffEquipment.skill.buff}
+        characterBuffStatus={characterBuffEquipment.skill}
       />
       <CharacterModal
         characterStatus={characterInformationDetail.status}

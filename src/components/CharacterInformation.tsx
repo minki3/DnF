@@ -1,6 +1,7 @@
 import {
   CharacterInformationStatusType,
   JobBuffType,
+  CharacterBuffEquipmentType,
 } from '@/service/types/type'
 import React from 'react'
 import CharacterInformationHeader from '@/components/CharacterInformationHeader'
@@ -8,7 +9,7 @@ import CharacterInformationHeader from '@/components/CharacterInformationHeader'
 interface Props {
   characterInformationDeatil: CharacterInformationStatusType
   server: string
-  characterBuffStatus?: JobBuffType | null
+  characterBuffStatus?: CharacterBuffEquipmentType | null
 }
 
 export default function CharacterInformation({
