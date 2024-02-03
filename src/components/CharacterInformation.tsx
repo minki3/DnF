@@ -8,7 +8,7 @@ import CharacterInformationHeader from '@/components/CharacterInformationHeader'
 interface Props {
   characterInformationDeatil: CharacterInformationStatusType
   server: string
-  characterBuffStatus: JobBuffType
+  characterBuffStatus?: JobBuffType | null
 }
 
 export default function CharacterInformation({
@@ -17,12 +17,10 @@ export default function CharacterInformation({
   characterBuffStatus,
 }: Props) {
   return (
-    <div>
-      <CharacterInformationHeader
-        characterInformationDetail={characterInformationDeatil}
-        server={server}
-        characterBuffStatus={characterBuffStatus}
-      />
-    </div>
+    <CharacterInformationHeader
+      characterInformationDetail={characterInformationDeatil}
+      server={server}
+      characterBuffStatus={characterBuffStatus}
+    />
   )
 }

@@ -8,7 +8,7 @@ import Image from 'next/image'
 interface Props {
   characterInformationDetail: CharacterInformationStatusType
   server: string
-  characterBuffStatus: JobBuffType
+  characterBuffStatus?: JobBuffType | null
 }
 
 export default function CharacterInformationHeader({
@@ -57,12 +57,15 @@ export default function CharacterInformationHeader({
             <span className=" font-thin">길드명 : </span>
             {guildName}
           </span>
-          <span className="flex flex-col">
-            <span className=" font-thin">버프 정보 :</span>
-            <span>{characterBuffStatus.name}</span>
-            <span> +{characterBuffStatus.option.level}</span>
-            <span>{characterBuffStatus.option.values[1]}%</span>
-          </span>
+
+          {characterBuffStatus && (
+            <span className="flex flex-col">
+              <span className=" font-thin">버프 정보 :</span>
+              <span>{characterBuffStatus.name}</span>
+              <span>+{characterBuffStatus.option.level}</span>
+              <span>{characterBuffStatus.option.values[1]}%</span>
+            </span>
+          )}
         </div>
       </div>
     </div>
