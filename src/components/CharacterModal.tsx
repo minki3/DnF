@@ -18,7 +18,7 @@ interface Props {
   characterAvatar: AvatarType[]
   characterCreature: CreatureType
   characterEquipment: EquipmentType[]
-  characterBuffEquipment: CharacterBuffEquipmentType
+  characterBuffEquipment?: CharacterBuffEquipmentType | null
 }
 
 const Categories = [

@@ -44,7 +44,7 @@ export default async function CharacterPage({ searchParams }: Props) {
       <CharacterInformation
         characterInformationDeatil={characterInformationDetail}
         server={searchParams.server}
-        characterBuffStatus={characterBuffEquipment.skill.buff.skillInfo}
+        characterBuffStatus={characterBuffEquipment.skill}
       />
       <CharacterModal
         characterStatus={characterInformationDetail.status}

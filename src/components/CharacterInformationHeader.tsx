@@ -2,13 +2,14 @@ import React from 'react'
 import {
   CharacterInformationStatusType,
   JobBuffType,
+  CharacterBuffEquipmentType,
 } from '@/service/types/type'
 import Image from 'next/image'
 
 interface Props {
   characterInformationDetail: CharacterInformationStatusType
   server: string
-  characterBuffStatus: JobBuffType
+  characterBuffStatus?: CharacterBuffEquipmentType | null
 }
 
 export default function CharacterInformationHeader({
@@ -28,6 +29,7 @@ export default function CharacterInformationHeader({
     guildId,
     guildName,
   } = characterInformationDetail
+
   return (
     <div className="flex justify-center items-center">
       <div className="flex items-center gap-6">
@@ -54,15 +56,20 @@ export default function CharacterInformationHeader({
             {jobGrowName}({jobName})
           </span>
           <span>
-            <span className=" font-thin">길드명 : </span>
+            {guildName && <span className=" font-thin">길드명 : </span>}
             {guildName}
           </span>
-          <span className="flex flex-col">
-            <span className=" font-thin">버프 정보 :</span>
-            <span>{characterBuffStatus.name}</span>
-            <span> +{characterBuffStatus.option.level}</span>
-            <span>{characterBuffStatus.option.values[1]}%</span>
-          </span>
+
+          {characterBuffStatus?.buff && (
+            <span className="flex flex-col">
+              <span className=" font-thin">버프 정보 :</span>
+              <span>{characterBuffStatus.buff.skillInfo.name}</span>
+              <span>+{characterBuffStatus.buff.skillInfo.option.level}</span>
+              <span>
+                {characterBuffStatus.buff.skillInfo.option.values[1]}%
+              </span>
+            </span>
+          )}
         </div>
       </div>
     </div>
