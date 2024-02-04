@@ -22,8 +22,8 @@ export const getCharacterFameRankCsr = async (
   isBuff: boolean,
   jobId: string,
   growJobId: string,
-  maxFame: number,
-  minFame: number,
+  maxFame: number | null,
+  minFame: number | null,
 ) => {
   try {
     const response = await fetch(
