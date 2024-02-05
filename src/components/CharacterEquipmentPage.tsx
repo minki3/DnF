@@ -3,11 +3,14 @@ import { EquipmentType } from '@/service/types/type'
 // import { rarityColor } from '@/service/utils/rarityColor'
 import React, { useState } from 'react'
 import Image from 'next/image'
+import InformationNotFound from '@/components/InformationNotFound'
 interface Props {
   characterEquipment: EquipmentType[]
 }
 
 export default function CharacterEquipmentPage({ characterEquipment }: Props) {
+  if (characterEquipment === null) return <InformationNotFound />
+
   const [hover, setHover] = useState<string | null>('')
 
   const handleHover = (item: string) => {

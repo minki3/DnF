@@ -2,12 +2,15 @@ import { CharacterBuffEquipmentType } from '@/service/types/type'
 import React from 'react'
 import Image from 'next/image'
 import { rarityColor } from '@/service/utils/rarityColor'
+import InformationNotFound from '@/components/InformationNotFound'
 
 interface Props {
   characterBuffEquipment?: CharacterBuffEquipmentType | null
 }
 
 export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
+  if (characterBuffEquipment && characterBuffEquipment.buff === null)
+    return <InformationNotFound />
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">

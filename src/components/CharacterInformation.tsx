@@ -1,6 +1,5 @@
 import {
   CharacterInformationStatusType,
-  JobBuffType,
   CharacterBuffEquipmentType,
 } from '@/service/types/type'
 import React from 'react'
