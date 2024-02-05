@@ -2,11 +2,13 @@ import React from 'react'
 import { AvatarType } from '@/service/types/type'
 import { rarityColor } from '@/service/utils/rarityColor'
 import Image from 'next/image'
+import InformationNotFound from '@/components/InformationNotFound'
 interface Props {
   characterAvatar: AvatarType[]
 }
 
 export default function CharacterAvatarPage({ characterAvatar }: Props) {
+  if (characterAvatar.length === 0) return <InformationNotFound />
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">

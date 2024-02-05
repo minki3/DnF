@@ -1,3 +1,4 @@
+import InformationNotFound from '@/components/InformationNotFound'
 import { CharacterStatusType } from '@/service/types/type'
 import React from 'react'
 
@@ -6,6 +7,7 @@ interface Props {
 }
 
 export default function CharacterStatusPage({ characterStatus }: Props) {
+  if (characterStatus.length === 0) return <InformationNotFound />
   return (
     <div className="flex justify-center">
       <ul className=" basis-1/3">

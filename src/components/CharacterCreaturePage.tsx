@@ -2,18 +2,14 @@ import { CreatureType } from '@/service/types/type'
 import { rarityColor } from '@/service/utils/rarityColor'
 import React from 'react'
 import Image from 'next/image'
+import InformationNotFound from '@/components/InformationNotFound'
 
 interface Props {
   characterCreature: CreatureType
 }
 
 export default function CharacterCreaturePage({ characterCreature }: Props) {
-  if (characterCreature === null)
-    return (
-      <div className=" flex justify-center items-center p-10">
-        정보를 찾을 수없습니다.
-      </div>
-    )
+  if (characterCreature === null) return <InformationNotFound />
 
   const { itemName, itemRarity, clone, artifact, itemId } = characterCreature
 
