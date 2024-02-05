@@ -27,8 +27,8 @@ export default function NavigationBar() {
         href={'/'}
         className="flex flex-col item hover:cursor-pointer basis-1/3"
       >
-        <span className="font-bold text-2xl">DnF-Search</span>
-        <span className="">(내 캐릭터 찾기)</span>
+        <span className="font-bold text-sm lg:text-2xl">DnF-Search</span>
+        <span className="text-sm">(내 캐릭터 찾기)</span>
       </Link>
 
       <div className="basis-1/3 text-center flex items-center justify-center">

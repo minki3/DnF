@@ -28,9 +28,9 @@ export default function RankCategory({ job, setJob, category }: Props) {
             growJobId: '',
           })
         }}
-        className={`${job.job === '' && 'font-bold'} pr-4`}
+        className={`${job.job === '' && 'font-bold'} pr-2 lg:pr-4`}
       >
-        전체
+        전 체
       </span>
       {category.map((item, idx) => {
         return (
@@ -46,13 +46,15 @@ export default function RankCategory({ job, setJob, category }: Props) {
                     growJob: '',
                   })
                 }}
-                className={`${job.job === item.job && 'font-bold'} p-4`}
+                className={`${
+                  job.job === item.job && 'font-bold'
+                } pr-2 lg:pr-4`}
               >
                 {item.job}
               </span>
             </div>
             {item.growJob && job.job === item.job && (
-              <div className=" absolute w-[1000px] left-0 top-8">
+              <div className=" absolute  left-0 top-8">
                 {item.growJob &&
                   job.job === item.job &&
                   item.growJob.map((item, idx) => {

@@ -1,9 +1,12 @@
 import React from 'react'
-import { CharactersDataType, ServerDataType } from '@/service/types/type'
+import {
+  CharacterInformationDetailType,
+  ServerDataType,
+} from '@/service/types/type'
 import CharacterInformationBox from '@/components/CharacterInformationBox'
 
 interface Props {
-  charactersData: CharactersDataType
+  charactersData: CharacterInformationDetailType[]
   serverData: ServerDataType
 }
 
@@ -11,6 +14,7 @@ export default async function CharacterSearchResult({
   charactersData,
   serverData,
 }: Props) {
+  console.log(charactersData)
   const filterServer = (serverId: string) => {
     return serverData.rows.filter(
       (data: { serverId: string; serverName: string }) => {
@@ -22,7 +26,7 @@ export default async function CharacterSearchResult({
   return (
     <ul className="grid grid-cols-4 gap-4 p-4">
       {charactersData &&
-        charactersData.rows.map((data, idx) => {
+        charactersData.map((data, idx) => {
           const filterData = filterServer(data.serverId)
           return (
             <React.Fragment key={idx}>

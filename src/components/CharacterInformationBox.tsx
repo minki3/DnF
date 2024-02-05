@@ -1,10 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import { CharacterInformationType, ServerType } from '@/service/types/type'
+import {
+  CharacterInformationDetailType,
+  ServerType,
+} from '@/service/types/type'
 import Link from 'next/link'
 
 interface Props {
-  characterData: CharacterInformationType
+  characterData: CharacterInformationDetailType
   server: ServerType[]
 }
 
@@ -37,7 +40,6 @@ export default async function CharacterInformationBox({
           alt="character"
           width={300}
           height={300}
-          className="border"
           priority
         />
 
