@@ -13,7 +13,7 @@ export default function SearchOrRank() {
         <span
           className={`${
             pathname === main && 'font-bold border-b-2 border-black'
-          } p-6 cursor-pointer text-lg`}
+          } p-2 lg:p-6 cursor-pointer text-sm lg:text-lg`}
         >
           캐릭터검색
         </span>
@@ -22,7 +22,7 @@ export default function SearchOrRank() {
         <span
           className={`${
             pathname === rank && 'font-bold border-b-2 border-black'
-          } p-6 cursor-pointer text-lg`}
+          } p-2 lg:p-6 cursor-pointer text-sm lg:text-lg`}
         >
           랭킹보기
         </span>

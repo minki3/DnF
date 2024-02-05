@@ -18,7 +18,7 @@ interface Props {
 
 export default function RankCategory({ job, setJob, category }: Props) {
   return (
-    <div className="flex relative cursor-pointer">
+    <div className="sm:hidden flex relative cursor-pointer text-sm lg:text-[13px] break-words">
       <span
         onClick={() => {
           setJob({

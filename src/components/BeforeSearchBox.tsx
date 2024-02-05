@@ -54,7 +54,7 @@ export default function BeforeSearchBox() {
   localStorage.setItem('saveServer', JSON.stringify(newData))
 
   return (
-    <div className="w-[500px] h-[300px] border rounded-lg mt-10 p-4 flex items-center flex-col">
+    <div className="w-[250px] h-[300px] lg:w-[500px] lg:h-[300px] border rounded-lg mt-10 p-4 flex items-center flex-col">
       <span className=" text-[12px] cursor-default mb-3">최근 검색</span>
       <ul className="w-full">
         {saveServer.value.length !== 0 &&

@@ -19,7 +19,7 @@ export default function NickNameInput({ large }: Props) {
       onChange={(e) => {
         NickNameHandler(e)
       }}
-      className={`${large && 'w-[300px]'} border rounded-lg p-2 `}
+      className={`${large && 'w-[150px] lg:w-[300px]'} border rounded-lg p-2 `}
     />
   )
 }

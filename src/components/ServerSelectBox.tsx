@@ -27,8 +27,10 @@ export default function ServerSelectBox({ serverData, large }: Props) {
 
   return (
     <div className="flex items-center">
-      <select className=" rounded-lg  p-[10px] mr-2" onChange={serverHandler}>
-        <option value="all">서버선택</option>
+      <select className=" rounded-lg p-[10px] mr-2" onChange={serverHandler}>
+        <option value="all" className="">
+          서버선택
+        </option>
         {serverData &&
           serverData.rows.map((item) => {
             const { serverId, serverName } = item
