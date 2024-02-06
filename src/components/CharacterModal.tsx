@@ -40,7 +40,7 @@ export default function CharacterModal({
 
   return (
     <>
-      <div className="flex gap-[20px] text-lg cursor-pointer justify-center mt-7 ">
+      <div className="flex gap-[20px] text-sm lg:text-lg cursor-pointer justify-center mt-7 ">
         {Categories.map((item) => {
           return (
             <div

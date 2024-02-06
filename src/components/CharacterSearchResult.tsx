@@ -24,7 +24,7 @@ export default async function CharacterSearchResult({
   }
 
   return (
-    <ul className="grid grid-cols-4 gap-4 p-4">
+    <ul className="grid lg:grid-cols-4 gap-4 p-4 grid-cols-2 md:grid-cols-3">
       {charactersData &&
         charactersData.map((data, idx) => {
           const filterData = filterServer(data.serverId)

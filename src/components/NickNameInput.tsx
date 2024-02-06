@@ -21,7 +21,7 @@ export default function NickNameInput({ large }: Props) {
       }}
       className={`${
         large && 'w-[150px] lg:w-[300px]'
-      } border rounded-lg p-2 sm:w-[100px]`}
+      } border rounded-lg lg:p-2 w-[100px] lg:w-[200px]`}
     />
   )
 }

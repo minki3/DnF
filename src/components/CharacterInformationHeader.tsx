@@ -32,14 +32,14 @@ export default function CharacterInformationHeader({
 
   return (
     <div className="flex justify-center items-center">
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 sm:flex-col">
         <Image
           src={`https://img-api.neople.co.kr/df/servers/${server}/characters/${characterId}`}
           alt="characterImage"
           width={350}
           height={350}
         />
-        <div className="flex  justify-center flex-col items-start tracking-[1px] leading-[3rem]">
+        <div className="flex  justify-center flex-col items-start gap-4 text-sm lg:text-[16px]">
           <span>
             <span className=" font-thin">모험단 : </span> {adventureName}
           </span>
@@ -61,7 +61,7 @@ export default function CharacterInformationHeader({
           </span>
 
           {characterBuffStatus?.buff && (
-            <span className="flex flex-col">
+            <span className="flex flex-col gap-2">
               <span className=" font-thin">버프 정보 :</span>
               <span>{characterBuffStatus.buff.skillInfo.name}</span>
               <span>+{characterBuffStatus.buff.skillInfo.option.level}</span>

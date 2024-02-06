@@ -8,6 +8,7 @@ interface Props {
 
 export default function CharacterStatusPage({ characterStatus }: Props) {
   if (characterStatus.length === 0) return <InformationNotFound />
+  console.log(characterStatus.filter((item, idx) => idx < 34))
   return (
     <div className="flex justify-center">
       <ul className=" basis-1/3">

@@ -34,7 +34,7 @@ export default async function CharacterInformationBox({
         query: { server: serverId, Id: characterId },
       }}
     >
-      <li className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer">
+      <li className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer text-sm lg:text-[16px]">
         <Image
           src={`https://img-api.neople.co.kr/df/servers/${serverId}/characters/${characterId}`}
           alt="character"

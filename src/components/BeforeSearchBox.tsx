@@ -7,7 +7,6 @@ import Link from 'next/link'
 export default function BeforeSearchBox() {
   const saveServer = useAppSelector((state) => state.saveSearch)
   const dispatch = useAppDispatch()
-  console.log(saveServer)
 
   const serverName = (server?: string) => {
     switch (server) {
