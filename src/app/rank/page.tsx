@@ -9,7 +9,7 @@ export default function RankPage() {
   const [open, setOpen] = useState<string>('딜러 랭킹')
   return (
     <div>
-      <div className="flex justify-center gap-6 text-lg cursor-pointer border-b mb-4">
+      <div className="flex justify-center gap-6  text-sm lg:text-lg cursor-pointer border-b mb-4">
         {category.map((item, idx) => {
           return (
             <span
@@ -18,7 +18,8 @@ export default function RankPage() {
                 setOpen(item)
               }}
               className={`${
-                open === item && ' font-bold border-b-2 border-black pb-4'
+                open === item &&
+                ' font-bold border-b-2 border-black lg:pb-4 pb-2'
               }`}
             >
               {item}

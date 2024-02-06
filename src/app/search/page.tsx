@@ -18,10 +18,14 @@ export default async function SearchPage({ searchParams }: Props) {
   if (characterData.error || characterData.rows.length === 0)
     return <CharactersNotFound />
 
+  const filterData = characterData.rows
+    .filter((item: any) => item.fame !== null)
+    .sort((a: any, b: any) => b.fame - a.fame)
+
   return (
     <>
       <CharacterSearchResult
-        charactersData={characterData}
+        charactersData={filterData}
         serverData={getServerData}
       />
     </>

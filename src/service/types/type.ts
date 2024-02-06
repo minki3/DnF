@@ -50,6 +50,7 @@ export interface JobBuffType {
 }
 
 export interface CharacterInformationDetailType {
+  serverId: string
   characterId: string
   characterName: string
   level: number
@@ -60,6 +61,7 @@ export interface CharacterInformationDetailType {
   adventureName: string
   guildId: string
   guildName: string
+  fame: number
 }
 
 export interface BuffType {

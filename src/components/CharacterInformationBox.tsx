@@ -1,10 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import { CharacterInformationType, ServerType } from '@/service/types/type'
+import {
+  CharacterInformationDetailType,
+  ServerType,
+} from '@/service/types/type'
 import Link from 'next/link'
 
 interface Props {
-  characterData: CharacterInformationType
+  characterData: CharacterInformationDetailType
   server: ServerType[]
 }
 
@@ -31,13 +34,12 @@ export default async function CharacterInformationBox({
         query: { server: serverId, Id: characterId },
       }}
     >
-      <li className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer">
+      <li className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg hover:cursor-pointer text-sm lg:text-[16px]">
         <Image
           src={`https://img-api.neople.co.kr/df/servers/${serverId}/characters/${characterId}`}
           alt="character"
           width={300}
           height={300}
-          className="border"
           priority
         />
 

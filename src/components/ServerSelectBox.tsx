@@ -18,7 +18,6 @@ export default function ServerSelectBox({ serverData, large }: Props) {
   const dispatch = useAppDispatch()
 
   const userData = useAppSelector((state) => state.serverIdSave)
-  console.log(userData)
 
   const serverHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedServer = event.target.value
@@ -27,8 +26,13 @@ export default function ServerSelectBox({ serverData, large }: Props) {
 
   return (
     <div className="flex items-center">
-      <select className=" rounded-lg  p-[10px] mr-2" onChange={serverHandler}>
-        <option value="all">서버선택</option>
+      <select
+        className=" rounded-lg lg:p-[10px] mr-2 text-[10px] lg:text-lg"
+        onChange={serverHandler}
+      >
+        <option value="all" className="">
+          서버선택
+        </option>
         {serverData &&
           serverData.rows.map((item) => {
             const { serverId, serverName } = item
@@ -59,13 +63,13 @@ export default function ServerSelectBox({ serverData, large }: Props) {
           dispatch(reset())
         }}
       >
-        <div className="w-[40px] h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">
+        <div className="w-[25px] h-[25px] lg:w-[40px] lg:h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">
           <Image
-            className=" hover:cursor-pointer"
+            className=" hover:cursor-pointer w-[20px] h-[20px] lg:w-[30px] lg:h-[30px]"
             src={readingGlasses}
             alt="readingGlasses"
-            width={30}
-            height={30}
+            width={0}
+            height={0}
           />
         </div>
       </Link>
