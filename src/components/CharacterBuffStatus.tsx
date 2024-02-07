@@ -17,7 +17,10 @@ export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
         {characterBuffEquipment?.buff &&
           characterBuffEquipment.buff.equipment.map((item, idx) => {
             return (
-              <li key={idx} className="p-6 border flex items-center">
+              <li
+                key={idx}
+                className="text-[8px] md:text-[13px] lg:text-base p-2 lg:p-6 border flex items-center"
+              >
                 <span className=" basis-1/3">{item.slotName}</span>
                 <div className="basis-1/3 flex items-center">
                   <Image
@@ -25,6 +28,7 @@ export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
                     alt="itemImage"
                     width={50}
                     height={50}
+                    className="sm:hidden"
                   />
                   <span className={`${rarityColor(item.itemRarity)} pl-2`}>
                     {item.itemName}

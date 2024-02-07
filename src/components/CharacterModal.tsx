@@ -40,13 +40,14 @@ export default function CharacterModal({
 
   return (
     <>
-      <div className="flex gap-[20px] text-sm lg:text-lg cursor-pointer justify-center mt-7 ">
+      <div className="flex gap-[20px] text-[12px] md:text-sm lg:text-lg cursor-pointer justify-center mt-7 ">
         {Categories.map((item) => {
           return (
             <div
               onClick={() => setOpen(item.state)}
               className={`${
-                open === item.state && 'font-bold border-b-2 border-black pb-4'
+                open === item.state &&
+                'font-bold border-b-2 border-black pb-2 lg:pb-4'
               }`}
             >
               {item.category}

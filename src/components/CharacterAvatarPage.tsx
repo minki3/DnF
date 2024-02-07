@@ -23,7 +23,10 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
             itemId,
           } = item
           return (
-            <li key={idx} className="border flex p-6 items-center">
+            <li
+              key={idx}
+              className="text-[6px] md:text-[13px] lg:text-base border flex p-2 lg:p-6 items-center"
+            >
               <div className="basis-1/4">{slotName}</div>
               <div className={` basis-1/4 flex flex-col`}>
                 <div className="flex items-center">
@@ -32,12 +35,13 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
                     alt="itemImage"
                     width={50}
                     height={50}
+                    className="sm:hidden"
                   />
                   <div className="flex flex-col pl-2">
                     <span className={`${rarityColor(itemRarity)}`}>
                       {itemName}
                     </span>
-                    <span className=" text-black text-[12px]">
+                    <span className=" text-black text-[6px] lg:text-[12px]">
                       {clone.itemName}
                     </span>
                   </div>
@@ -51,7 +55,7 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
                       key={idx}
                       className={`${rarityColor(
                         itemRarity,
-                      )} text-[12px] text-center`}
+                      )} text-[6px] lg:text-[12px] text-center`}
                     >
                       {itemName}
                     </span>
