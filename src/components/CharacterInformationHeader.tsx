@@ -39,7 +39,7 @@ export default function CharacterInformationHeader({
           width={350}
           height={350}
         />
-        <div className="flex  justify-center flex-col items-start gap-4 text-sm lg:text-[16px]">
+        <div className="flex  justify-center flex-col items-start gap-2 lg:gap-4  text-[10px] lg:text-[16px]">
           <span>
             <span className=" font-thin">모험단 : </span> {adventureName}
           </span>

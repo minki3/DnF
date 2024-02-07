@@ -51,7 +51,6 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
             customOption,
             itemId,
           } = item
-          console.log(itemName, customOption)
           return (
             <li
               key={idx}

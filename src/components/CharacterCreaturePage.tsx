@@ -16,7 +16,7 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
-        <li className="flex border p-6 items-center">
+        <li className="flex border text-[6px] md:text-[13px] lg:text-base p-2 lg:p-6 items-center">
           <span className="basis-1/3">크리처</span>
           <div className="flex flex-col basis-1/3">
             <div className="flex items-center">
@@ -25,10 +25,11 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
                 alt="itemImage"
                 width={50}
                 height={50}
+                className="sm:hidden"
               />
               <div className="flex flex-col p-2">
                 <span className={`${rarityColor(itemRarity)}`}>{itemName}</span>
-                <span className="text-[13px]">{clone.itemName}</span>
+                <span className="lg:text-[13px]">{clone.itemName}</span>
               </div>
             </div>
           </div>
@@ -38,7 +39,7 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
               return (
                 <li
                   key={idx}
-                  className={`${rarityColor(itemRarity)} text-[12px]`}
+                  className={`${rarityColor(itemRarity)} lg:text-[12px]`}
                 >
                   {itemName}
                 </li>
