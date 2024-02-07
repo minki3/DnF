@@ -55,7 +55,7 @@ export default function CharacterModal({
         })}
       </div>
       <div className="border-b" />
-      <div className="p-4">
+      <div className="p-2 lg:p-4">
         {open === 'status' && (
           <CharacterStatusPage characterStatus={characterStatus} />
         )}

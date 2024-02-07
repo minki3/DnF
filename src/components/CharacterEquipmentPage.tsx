@@ -53,7 +53,10 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
           } = item
           console.log(itemName, customOption)
           return (
-            <li key={idx} className="p-6 border flex items-center">
+            <li
+              key={idx}
+              className="text-[8px] md:text-[13px] lg:text-base p-2 lg:p-6 border flex items-center"
+            >
               <span className=" basis-1/4">{slotName}</span>
               <div
                 className="flex flex-col basis-1/4 "
@@ -70,6 +73,7 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                     alt="itemImage"
                     width={50}
                     height={50}
+                    className="sm:hidden"
                   />
                   <div className="flex flex-col pl-2">
                     <span className={`${rarityColor(itemRarity)}`}>
@@ -88,7 +92,9 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                       &nbsp;{itemName}
                     </span>
                     {skin && (
-                      <span className="text-[12px]">{skin.itemName}</span>
+                      <span className="text-[7px] lg:text-[12px]">
+                        {skin.itemName}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -105,12 +111,12 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                   itemName.includes('仙 :') &&
                   (fixedOption?.level === 40 || customOption?.level === 40) &&
                   'text-pink-400'
-                } basis-1/4 text-end`}
+                } basis-1/4 lg:text-end md:text-end text-center`}
               >
                 {fixedOption && <span>Lv {fixedOption.level}</span>}
                 {customOption && <span>Lv {customOption.level}</span>}
               </div>
-              <div className=" basis-1/4 flex flex-col text-[12px] text-end">
+              <div className=" basis-1/4 flex flex-col text-[8px] lg:text-[12px] text-end">
                 {enchant &&
                   enchant.status &&
                   enchant.status.map((item, idx) => {
