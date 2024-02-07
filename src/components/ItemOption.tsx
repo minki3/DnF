@@ -16,44 +16,51 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
   })
 
   return (
-    <div className="border lg:px-4 lg:pt-4 mt-2 px-2 pt-2 absolute bg-blue-300 left-[50%]">
-      {fixedOption && (
-        <ul className="">
-          {options &&
-            options?.map((option, idx) => {
-              return (
-                <li className="text-[6px] lg:text-[11px] pb-4" key={idx}>
-                  {option.includes('-') ? (
-                    <span className="pl-2">{option}</span>
-                  ) : (
-                    <span className="">• {option}</span>
-                  )}
-                </li>
-              )
-            })}
-        </ul>
+    <>
+      {(fixedOption || customOption) && (
+        <div className="border lg:px-4 lg:pt-4 mt-2 px-2 pt-2 absolute bg-blue-300 left-[50%]">
+          {fixedOption && (
+            <ul className="">
+              {options &&
+                options?.map((option, idx) => {
+                  return (
+                    <li className="text-[6px] lg:text-[11px] pb-4" key={idx}>
+                      {option.includes('-') ? (
+                        <span className="pl-2">{option}</span>
+                      ) : (
+                        <span className="">• {option}</span>
+                      )}
+                    </li>
+                  )
+                })}
+            </ul>
+          )}
+          {customOption && (
+            <ul>
+              {customOptions &&
+                customOptions.map((items, idx) => {
+                  return (
+                    <li key={idx} className="flex flex-col">
+                      <span className="text-[8px] lg:text-[13px] font-bold">
+                        • {`${idx + 1}옵션 `}
+                      </span>
+                      {items.map((item, idx) => {
+                        return (
+                          <div
+                            className="text-[7px] lg:text-[11px] pb-4"
+                            key={idx}
+                          >
+                            <span>{item}</span>
+                          </div>
+                        )
+                      })}
+                    </li>
+                  )
+                })}
+            </ul>
+          )}
+        </div>
       )}
-      {customOption && (
-        <ul>
-          {customOptions &&
-            customOptions.map((items, idx) => {
-              return (
-                <li key={idx} className="flex flex-col">
-                  <span className="text-[8px] lg:text-[13px] font-bold">
-                    • {`${idx + 1}옵션 `}
-                  </span>
-                  {items.map((item, idx) => {
-                    return (
-                      <div className="text-[7px] lg:text-[11px] pb-4" key={idx}>
-                        <span>{item}</span>
-                      </div>
-                    )
-                  })}
-                </li>
-              )
-            })}
-        </ul>
-      )}
-    </div>
+    </>
   )
 }
