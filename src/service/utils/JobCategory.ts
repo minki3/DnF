@@ -1,4 +1,5 @@
 export const category = [
+  { job: '전체', jobId: '', growJob: [{ job: '', jobId: '' }] },
   {
     job: '귀검사(남)',
     jobId: '41f1cdc2ff58bb5fdc287be0db2a8df3',
@@ -167,9 +168,11 @@ export const category = [
   {
     job: '다크나이트',
     jobId: '17e417b31686389eebff6d754c3401ea',
+    growJob: [{ job: '전체', jobId: '' }],
   },
   {
     job: '크리에이터',
     jobId: 'b522a95d819a5559b775deb9a490e49a',
+    growJob: [{ job: '전체', jobId: '' }],
   },
 ]

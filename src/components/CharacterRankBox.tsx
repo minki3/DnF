@@ -28,9 +28,9 @@ export default function CharacterRankBox({ characterData, idx, page }: Props) {
         pathname: '/character',
         query: { server: serverId, Id: characterId },
       }}
-      className='className="p-4 flex items-center border w-full m-6'
+      className=" flex items-center border w-full p-2 m-2 lg:m-6 text-[10px] lg:text-base"
     >
-      <div className="flex items-center pl-4 basis-1/4">
+      <div className="flex items-center pl-4 basis-1/4 ">
         {page === 1 ? (
           <span>{idx + 1}위</span>
         ) : page === 2 ? (
@@ -44,7 +44,7 @@ export default function CharacterRankBox({ characterData, idx, page }: Props) {
           alt="character"
           width={300}
           height={300}
-          className="w-[70%]"
+          className="w-[65%] lg:w-[70%]"
           priority
         />
       </div>
