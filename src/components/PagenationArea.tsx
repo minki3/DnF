@@ -19,7 +19,7 @@ export default function PagenationArea({
 }: Props) {
   const numPage = Math.ceil(total / limit)
   return (
-    <div className="gap-6">
+    <div className="text-[10px] lg:text-base">
       <button
         onClick={() => {
           prevPage(1)
@@ -38,7 +38,7 @@ export default function PagenationArea({
               onClick={() => {
                 setPage(idx + 1)
               }}
-              className={`${page === idx + 1 && 'font-bold'} p-4`}
+              className={`${page === idx + 1 && 'font-bold'} p-2 lg:p-4`}
             >
               {idx + 1}
             </button>

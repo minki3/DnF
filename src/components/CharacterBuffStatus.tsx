@@ -11,10 +11,13 @@ interface Props {
 export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
   if (characterBuffEquipment && characterBuffEquipment.buff === null)
     return <InformationNotFound />
+  if (characterBuffEquipment && characterBuffEquipment.buff.equipment === null)
+    return <InformationNotFound />
+
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
-        {characterBuffEquipment?.buff &&
+        {characterBuffEquipment?.buff.equipment &&
           characterBuffEquipment.buff.equipment.map((item, idx) => {
             return (
               <li

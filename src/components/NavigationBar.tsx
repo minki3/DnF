@@ -22,7 +22,7 @@ export default function NavigationBar() {
     return <SearchOrRank />
   }
   return (
-    <nav className="fixed border-b-2 border-black w-full p-4 flex bg-white">
+    <nav className="fixed top-0 border-b-2 border-black w-full p-4 flex bg-white">
       <div className="flex flex-col justify-start hover:cursor-pointer basis-1/3">
         <Link className="flex flex-col" href={'/'}>
           <span className="font-bold text-[10px] lg:text-2xl">DnF-Search</span>

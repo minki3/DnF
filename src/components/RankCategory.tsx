@@ -21,7 +21,7 @@ export default function RankCategory({ job, setJob, category }: Props) {
   return (
     <>
       {/*데스크탑일 경우 */}
-      <div className="sm:hidden flex relative cursor-pointer text-sm lg:text-[13px] break-words">
+      <div className="sm:hidden md:hidden flex relative cursor-pointer md:text-[8px] lg:text-[13px] break-words">
         {category.map((item, idx) => {
           return (
             <div key={idx} className="">
@@ -38,7 +38,7 @@ export default function RankCategory({ job, setJob, category }: Props) {
                   }}
                   className={`${
                     job.job === item.job && 'font-bold'
-                  } pr-2 lg:pr-4`}
+                  } pr-2 lg:pr-[14px]`}
                 >
                   {item.job}
                 </span>

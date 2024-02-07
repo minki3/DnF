@@ -1,5 +1,10 @@
 export const BuffJobCategory = [
   {
+    job: '전체',
+    jobId: '',
+    growJob: [{ job: '전체', jobId: '' }],
+  },
+  {
     job: '크루세이더',
     jobId: 'f6a4ad30555b99b499c07835f87ce522',
     growJob: [{ job: '전체', jobId: '' }],
