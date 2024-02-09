@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import StoreProvider from '@/app/StoreProvider'
 import NavigationBar from '@/components/NavigationBar'
+import Footer from '@/components/Footer'
+import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-w-[375] max-w-[1620px] `}>
-        <StoreProvider>
-          <NavigationBar />
-          <main className="pt-28">{children}</main>
-        </StoreProvider>
+      <body className={`${inter.className}  `}>
+        <Suspense fallback={<div>...loading</div>}>
+          <StoreProvider>
+            <NavigationBar />
+            <main className="pt-28">{children}</main>
+          </StoreProvider>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   )

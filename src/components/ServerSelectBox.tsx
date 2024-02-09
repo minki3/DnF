@@ -23,7 +23,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
     const selectedServer = event.target.value
     dispatch(serverChange(selectedServer))
   }
-
+  console.log(userData)
   return (
     <div className="flex items-center">
       <select
@@ -48,6 +48,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
           })}
       </select>
       <NickNameInput large={large} />
+
       <Link
         href={{
           pathname: '/search',
