@@ -24,7 +24,9 @@ export default function RootLayout({
         <Suspense fallback={<div>...loading</div>}>
           <StoreProvider>
             <NavigationBar />
-            <main className="pt-28">{children}</main>
+            <Suspense fallback={<div>...loading</div>}>
+              <main className="pt-28">{children}</main>
+            </Suspense>
           </StoreProvider>
           <Footer />
         </Suspense>

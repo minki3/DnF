@@ -1,6 +1,5 @@
 import ItemOption from '@/components/ItemOption'
 import { EquipmentType } from '@/service/types/type'
-// import { rarityColor } from '@/service/utils/rarityColor'
 import React, { useState } from 'react'
 import Image from 'next/image'
 import InformationNotFound from '@/components/InformationNotFound'
@@ -35,6 +34,7 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
         return ''
     }
   }
+  console.log(characterEquipment)
   return (
     <div className="flex justify-center cursor-default">
       <ul className=" basis-4/5 ">
@@ -50,7 +50,9 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
             fixedOption,
             customOption,
             itemId,
+            upgradeInfo,
           } = item
+          const upgradeItme = upgradeInfo?.itemName.split(':')[0].split(' ')[0]
           return (
             <li
               key={idx}
@@ -72,26 +74,44 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                     alt="itemImage"
                     width={50}
                     height={50}
-                    className="sm:hidden"
+                    className="sm:hidden pr-2"
                   />
+                  {upgradeInfo && upgradeInfo.itemId && (
+                    <Image
+                      src={`https://img-api.neople.co.kr/df/items/${upgradeInfo.itemId}`}
+                      alt="itemImage"
+                      width={30}
+                      height={30}
+                      className="sm:hidden"
+                    />
+                  )}
                   <div className="flex flex-col pl-2">
-                    <span className={`${rarityColor(itemRarity)}`}>
-                      {reinforce !== 0 && (
-                        <span
-                          className={`${
-                            amplificationName &&
-                            amplificationName.includes('차원')
-                              ? ' text-pink-400'
-                              : 'text-black'
-                          }`}
-                        >
-                          +{reinforce}
+                    <span
+                      className={`${rarityColor(itemRarity)} flex flex-col`}
+                    >
+                      <div>
+                        {reinforce !== 0 && (
+                          <span
+                            className={`${
+                              amplificationName &&
+                              amplificationName.includes('차원')
+                                ? ' text-pink-400'
+                                : 'text-black'
+                            }`}
+                          >
+                            +{reinforce}
+                          </span>
+                        )}
+                        &nbsp;{itemName}
+                      </div>
+                      {upgradeInfo && upgradeInfo.itemName && (
+                        <span className="text-[7px] lg:text-[12px] lg:pl-2 text-red-500">
+                          {upgradeInfo.itemName}
                         </span>
                       )}
-                      &nbsp;{itemName}
                     </span>
                     {skin && (
-                      <span className="text-[7px] lg:text-[12px]">
+                      <span className="text-[7px] lg:text-[12px] pl-2">
                         {skin.itemName}
                       </span>
                     )}
