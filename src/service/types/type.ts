@@ -150,6 +150,7 @@ export interface EquipmentType {
   fixedOption?: FixedOptionType
   skin?: WeaponSkinType
   customOption?: CustomOptionType
+  upgradeInfo?: { itemId: string; itemName: string }
 }
 
 export interface FixedOptionType {
