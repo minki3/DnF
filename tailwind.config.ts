@@ -13,6 +13,9 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        darkModeBg: 'var(--hello)',
+      },
     },
     screens: {
       sm: { min: '375px', max: '819px' },
@@ -21,5 +24,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  darkMode: 'class',
 }
 export default config

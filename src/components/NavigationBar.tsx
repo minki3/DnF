@@ -5,6 +5,7 @@ import { getServerApiCsr } from '@/service/api/getServerApi'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import SearchOrRank from '@/components/SearchOrRankNav'
+import DarkModeButton from '@/components/DarkModeButton'
 
 export default function NavigationBar() {
   const [serverData, setServerData] = useState()
@@ -22,7 +23,7 @@ export default function NavigationBar() {
     return <SearchOrRank />
   }
   return (
-    <nav className="fixed top-0 border-b-2 border-black w-full p-4 flex bg-white">
+    <nav className="fixed top-0 border-b-2 border-black w-full p-4 flex bg-white dark:bg-black dark:border-white">
       <div className="flex flex-col justify-start hover:cursor-pointer basis-1/3">
         <Link className="flex flex-col" href={'/'}>
           <span className="font-bold text-[10px] lg:text-2xl">DnF-Search</span>
@@ -34,12 +35,13 @@ export default function NavigationBar() {
         <ServerSelectBox serverData={serverData} />
       </div>
 
-      <div className="basis-1/3 flex items-center justify-end">
+      <div className="basis-1/3 flex items-center justify-end gap-4">
         <Link href={'/rank'}>
-          <span className=" text-[10px] lg:text-lg cursor-pointer underline-offset-2 hover:font-bold hover:cursor-pointer">
+          <span className=" text-[10px] lg:text-lg cursor-pointer hover:font-bold hover:cursor-pointer">
             랭킹보기
           </span>
         </Link>
+        <DarkModeButton />
       </div>
     </nav>
   )

@@ -66,7 +66,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
       >
         <div className="w-[25px] h-[25px] lg:w-[40px] lg:h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">
           <Image
-            className=" hover:cursor-pointer w-[20px] h-[20px] lg:w-[30px] lg:h-[30px]"
+            className=" hover:cursor-pointer w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] dark:invert"
             src={readingGlasses}
             alt="readingGlasses"
             width={0}
