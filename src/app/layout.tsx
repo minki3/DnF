@@ -5,6 +5,7 @@ import StoreProvider from '@/app/StoreProvider'
 import NavigationBar from '@/components/NavigationBar'
 import Footer from '@/components/Footer'
 import { Suspense } from 'react'
+import DarkModeProvider from '@/app/DarkModeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,13 +23,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}  `}>
         <Suspense fallback={<div>...loading</div>}>
-          <StoreProvider>
-            <NavigationBar />
-            <Suspense fallback={<div>...loading</div>}>
-              <main className="pt-28">{children}</main>
-            </Suspense>
-          </StoreProvider>
-          <Footer />
+          <DarkModeProvider>
+            <StoreProvider>
+              <NavigationBar />
+              <Suspense fallback={<div>...loading</div>}>
+                <main className="pt-28">{children}</main>
+              </Suspense>
+            </StoreProvider>
+            <Footer />
+          </DarkModeProvider>
         </Suspense>
       </body>
     </html>
