@@ -3,6 +3,7 @@ import { EquipmentType } from '@/service/types/type'
 import React, { useState } from 'react'
 import Image from 'next/image'
 import InformationNotFound from '@/components/InformationNotFound'
+import { motion } from 'framer-motion'
 interface Props {
   characterEquipment: EquipmentType[]
 }
@@ -36,7 +37,11 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
   }
   console.log(characterEquipment)
   return (
-    <div className="flex justify-center cursor-default">
+    <motion.div
+      className="flex justify-center cursor-default"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <ul className=" basis-4/5 ">
         {characterEquipment.map((item, idx) => {
           const {
@@ -151,6 +156,6 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
           )
         })}
       </ul>
-    </div>
+    </motion.div>
   )
 }

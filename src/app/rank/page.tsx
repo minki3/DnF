@@ -2,13 +2,14 @@
 import React, { useState } from 'react'
 import AttackerRankPage from '@/components/AttackerRankPage'
 import BufferRankPage from '@/components/BufferRankPage'
+import { motion } from 'framer-motion'
 
 export default function RankPage() {
   const category = ['딜러 랭킹', '버퍼 랭킹']
 
   const [open, setOpen] = useState<string>('딜러 랭킹')
   return (
-    <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <div className="flex justify-center gap-6  text-sm lg:text-lg cursor-pointer border-b mb-4">
         {category.map((item, idx) => {
           return (
@@ -29,6 +30,6 @@ export default function RankPage() {
       </div>
       {open === '딜러 랭킹' && <AttackerRankPage />}
       {open === '버퍼 랭킹' && <BufferRankPage />}
-    </div>
+    </motion.div>
   )
 }

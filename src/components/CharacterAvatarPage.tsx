@@ -3,6 +3,7 @@ import { AvatarType } from '@/service/types/type'
 import { rarityColor } from '@/service/utils/rarityColor'
 import Image from 'next/image'
 import InformationNotFound from '@/components/InformationNotFound'
+import { motion } from 'framer-motion'
 interface Props {
   characterAvatar: AvatarType[]
 }
@@ -10,7 +11,11 @@ interface Props {
 export default function CharacterAvatarPage({ characterAvatar }: Props) {
   if (characterAvatar.length === 0) return <InformationNotFound />
   return (
-    <div className="flex justify-center cursor-default">
+    <motion.div
+      className="flex justify-center cursor-default"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <ul className=" basis-4/5 ">
         {characterAvatar.map((item, idx) => {
           const {
@@ -67,6 +72,6 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
           )
         })}
       </ul>
-    </div>
+    </motion.div>
   )
 }

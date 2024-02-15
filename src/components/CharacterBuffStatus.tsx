@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { rarityColor } from '@/service/utils/rarityColor'
 import InformationNotFound from '@/components/InformationNotFound'
+import { motion } from 'framer-motion'
 
 interface Props {
   characterBuffEquipment?: CharacterBuffEquipmentType | null
@@ -15,7 +16,11 @@ export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
     return <InformationNotFound />
 
   return (
-    <div className="flex justify-center cursor-default">
+    <motion.div
+      className="flex justify-center cursor-default"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <ul className=" basis-4/5 ">
         {characterBuffEquipment?.buff.equipment &&
           characterBuffEquipment.buff.equipment.map((item, idx) => {
@@ -42,6 +47,6 @@ export default function CharacterBuffStatus({ characterBuffEquipment }: Props) {
             )
           })}
       </ul>
-    </div>
+    </motion.div>
   )
 }

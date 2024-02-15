@@ -22,6 +22,6 @@ export const BuffJobCategory = [
   {
     job: '뮤즈',
     jobId: 'b9cb48777665de22c006fabaf9a560b3',
-    growJob: [{ job: '전체', jobId: '' }],
+    growJob: [{ job: '', jobId: '' }],
   },
 ]

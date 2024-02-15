@@ -25,12 +25,22 @@ export default function DarkModeButton({}: DarkModeButtonType) {
   const currentTheme = theme === 'system' ? systemTheme : theme
 
   return (
-    <div className="bg-darkModeBg cursor-pointer rounded-[50%]  p-1 lg:p-2 border border-black dark:border-white">
+    <>
       {currentTheme === 'dark' ? (
-        <BsFillMoonFill onClick={onClick('light')} />
+        <div
+          className="bg-darkModeBg cursor-pointer rounded-[50%]  p-1 lg:p-2 border border-black dark:border-white"
+          onClick={onClick('light')}
+        >
+          <BsFillMoonFill />
+        </div>
       ) : (
-        <BsFillSunFill onClick={onClick('dark')} />
+        <div
+          className="bg-darkModeBg cursor-pointer rounded-[50%]  p-1 lg:p-2 border border-black dark:border-white"
+          onClick={onClick('dark')}
+        >
+          <BsFillSunFill />
+        </div>
       )}
-    </div>
+    </>
   )
 }

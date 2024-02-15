@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { CharacterRankType } from '@/service/types/type'
 import CharacterRankBox from '@/components/CharacterRankBox'
 import PagenationArea from '@/components/PagenationArea'
+import { motion } from 'framer-motion'
 
 export default function BufferRankPage() {
   const [job, setJob] = useState({
@@ -43,7 +44,11 @@ export default function BufferRankPage() {
   }, [page])
 
   return (
-    <div className="flex gap-5 flex-col p-2">
+    <motion.div
+      className="flex gap-5 flex-col p-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <RankCategory job={job} setJob={setJob} category={BuffJobCategory} />
       <div className="flex items-center flex-col">
         {data &&
@@ -71,6 +76,6 @@ export default function BufferRankPage() {
           />
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }
