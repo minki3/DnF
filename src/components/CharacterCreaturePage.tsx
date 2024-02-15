@@ -3,6 +3,7 @@ import { rarityColor } from '@/service/utils/rarityColor'
 import React from 'react'
 import Image from 'next/image'
 import InformationNotFound from '@/components/InformationNotFound'
+import { motion } from 'framer-motion'
 
 interface Props {
   characterCreature: CreatureType
@@ -14,7 +15,11 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
   const { itemName, itemRarity, clone, artifact, itemId } = characterCreature
 
   return (
-    <div className="flex justify-center cursor-default">
+    <motion.div
+      className="flex justify-center cursor-default"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <ul className=" basis-4/5 ">
         <li className="flex border text-[6px] md:text-[13px] lg:text-base p-2 lg:p-6 items-center">
           <span className="basis-1/3">크리처</span>
@@ -48,6 +53,6 @@ export default function CharacterCreaturePage({ characterCreature }: Props) {
           </ul>
         </li>
       </ul>
-    </div>
+    </motion.div>
   )
 }

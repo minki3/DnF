@@ -5,6 +5,7 @@ import PagenationArea from '@/components/PagenationArea'
 import CharacterRankBox from '@/components/CharacterRankBox'
 import { category } from '@/service/utils/JobCategory'
 import RankCategory from '@/components/RankCategory'
+import { motion } from 'framer-motion'
 
 export default function AttackerRankPage() {
   const [job, setJob] = useState({
@@ -43,7 +44,11 @@ export default function AttackerRankPage() {
     window.scrollTo(0, 0)
   }, [page])
   return (
-    <div className="flex gap-5 flex-col p-2">
+    <motion.div
+      className="flex gap-5 flex-col p-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <RankCategory job={job} setJob={setJob} category={category} />
       <div className="flex items-center flex-col">
         {data &&
@@ -71,6 +76,6 @@ export default function AttackerRankPage() {
           />
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }
