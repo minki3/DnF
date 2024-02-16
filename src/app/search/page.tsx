@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 import { getServerApi } from '@/service/api/getServerApi'
 import CharacterSearchResult from '@/components/CharacterSearchResult'
@@ -24,10 +24,12 @@ export default async function SearchPage({ searchParams }: Props) {
 
   return (
     <>
-      <CharacterSearchResult
-        charactersData={filterData}
-        serverData={getServerData}
-      />
+      <Suspense fallback={<div>정보를 찾고 있습니다.</div>}>
+        <CharacterSearchResult
+          charactersData={filterData}
+          serverData={getServerData}
+        />
+      </Suspense>
     </>
   )
 }

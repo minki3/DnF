@@ -22,17 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}  `}>
-        <Suspense fallback={<div>...loading</div>}>
-          <DarkModeProvider>
-            <StoreProvider>
-              <NavigationBar />
-              <Suspense fallback={<div>...loading</div>}>
-                <main className="pt-28">{children}</main>
-              </Suspense>
-            </StoreProvider>
-            <Footer />
-          </DarkModeProvider>
-        </Suspense>
+        <DarkModeProvider>
+          <StoreProvider>
+            <NavigationBar />
+            <main className="pt-28 ">{children}</main>
+          </StoreProvider>
+          <Footer />
+        </DarkModeProvider>
       </body>
     </html>
   )

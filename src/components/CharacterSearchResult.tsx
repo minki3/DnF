@@ -4,6 +4,7 @@ import {
   ServerDataType,
 } from '@/service/types/type'
 import CharacterInformationBox from '@/components/CharacterInformationBox'
+import MotionComponent from '@/components/MotionComponent'
 
 interface Props {
   charactersData: CharacterInformationDetailType[]
@@ -24,19 +25,21 @@ export default async function CharacterSearchResult({
   }
 
   return (
-    <ul className="grid lg:grid-cols-4 gap-4 p-4 grid-cols-2 md:grid-cols-3">
-      {charactersData &&
-        charactersData.map((data, idx) => {
-          const filterData = filterServer(data.serverId)
-          return (
-            <React.Fragment key={idx}>
-              <CharacterInformationBox
-                characterData={data}
-                server={filterData}
-              />
-            </React.Fragment>
-          )
-        })}
-    </ul>
+    <MotionComponent>
+      <ul className="grid lg:grid-cols-4 gap-4 p-4 grid-cols-2 md:grid-cols-3">
+        {charactersData &&
+          charactersData.map((data, idx) => {
+            const filterData = filterServer(data.serverId)
+            return (
+              <React.Fragment key={idx}>
+                <CharacterInformationBox
+                  characterData={data}
+                  server={filterData}
+                />
+              </React.Fragment>
+            )
+          })}
+      </ul>
+    </MotionComponent>
   )
 }
