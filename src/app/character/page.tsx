@@ -5,6 +5,7 @@ import CharacterModal from '@/components/CharacterModal'
 import { getCharacterEquipment } from '@/service/api/getCharacterEquipment'
 import CharactersNotFound from '@/components/CharactersNotFound'
 import { getCharacterBuff } from '@/service/api/getCharacterBuff'
+import MotionComponent from '@/components/MotionComponent'
 
 interface Props {
   searchParams: { server: string; Id: string }
@@ -40,7 +41,7 @@ export default async function CharacterPage({ searchParams }: Props) {
   if (characterInformationDetail.error) return <CharactersNotFound />
 
   return (
-    <>
+    <MotionComponent>
       <CharacterInformation
         characterInformationDeatil={characterInformationDetail}
         server={searchParams.server}
@@ -53,6 +54,6 @@ export default async function CharacterPage({ searchParams }: Props) {
         characterEquipment={characterEquipment.equipment}
         characterBuffEquipment={characterBuffEquipment.skill}
       />
-    </>
+    </MotionComponent>
   )
 }

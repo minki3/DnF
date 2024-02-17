@@ -1,9 +1,10 @@
 'use client'
-import React, { useState } from 'react'
-import AttackerRankPage from '@/components/AttackerRankPage'
+import React, { Suspense, useState } from 'react'
+import JobRankPage from '@/components/JobRankPage'
 import BufferRankPage from '@/components/BufferRankPage'
 import { motion } from 'framer-motion'
-
+import { Jobcategory } from '@/service/utils/JobCategory'
+import { BuffJobCategory } from '@/service/utils/BuffJobCategory'
 export default function RankPage() {
   const category = ['딜러 랭킹', '버퍼 랭킹']
 
@@ -28,8 +29,12 @@ export default function RankPage() {
           )
         })}
       </div>
-      {open === '딜러 랭킹' && <AttackerRankPage />}
-      {open === '버퍼 랭킹' && <BufferRankPage />}
+      {open === '딜러 랭킹' && (
+        <JobRankPage isBuff={false} category={Jobcategory} />
+      )}
+      {open === '버퍼 랭킹' && (
+        <JobRankPage isBuff category={BuffJobCategory} />
+      )}
     </motion.div>
   )
 }

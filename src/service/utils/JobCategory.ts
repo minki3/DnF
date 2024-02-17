@@ -1,4 +1,4 @@
-export const category = [
+export const Jobcategory = [
   { job: '전체', jobId: '', growJob: [{ job: '', jobId: '' }] },
   {
     job: '귀검사(남)',

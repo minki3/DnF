@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 import { getServerApi } from '@/service/api/getServerApi'
 import CharacterSearchResult from '@/components/CharacterSearchResult'
 import CharactersNotFound from '@/components/CharactersNotFound'
+import SkeletonComponent from '@/components/skeleton/SkeletonComponent'
 
 interface Props {
   searchParams: { server: string; nickname: string }
 }
 
 export default async function SearchPage({ searchParams }: Props) {
+  const CharacterSearchResult = React.lazy(
+    () => import('@/components/CharacterSearchResult'),
+  )
   const getServerData = await getServerApi()
   const characterData = await getCharacterInformation(
     searchParams.server,
@@ -23,11 +27,11 @@ export default async function SearchPage({ searchParams }: Props) {
     return <CharactersNotFound />
 
   return (
-    <>
+    <Suspense fallback={<SkeletonComponent type="search" />}>
       <CharacterSearchResult
         charactersData={filterData}
         serverData={getServerData}
       />
-    </>
+    </Suspense>
   )
 }

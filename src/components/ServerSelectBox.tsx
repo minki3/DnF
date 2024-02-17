@@ -25,7 +25,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
   }
   console.log(userData)
   return (
-    <div className="flex items-center">
+    <div className="flex items-center justify-evenly">
       <select
         className=" rounded-lg lg:p-[10px] mr-2 text-[10px] lg:text-lg"
         onChange={serverHandler}
