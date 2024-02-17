@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import AttackerRankPage from '@/components/AttackerRankPage'
 import BufferRankPage from '@/components/BufferRankPage'
 import { motion } from 'framer-motion'

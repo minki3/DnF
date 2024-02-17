@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { getCharacterFameRankCsr } from '@/service/api/getCharacterFameRank'
 import { CharacterRankType } from '@/service/types/type'
 import PagenationArea from '@/components/PagenationArea'
-import CharacterRankBox from '@/components/CharacterRankBox'
 import { category } from '@/service/utils/JobCategory'
 import RankCategory from '@/components/RankCategory'
 import { motion } from 'framer-motion'
+import SkeletonComponent from '@/components/skeleton/SkeletonComponent'
 
 export default function AttackerRankPage() {
+  const CharacterRankBox = React.lazy(
+    () => import('@/components/CharacterRankBox'),
+  )
   const [job, setJob] = useState({
     job: '',
     growJob: '',
@@ -50,20 +53,22 @@ export default function AttackerRankPage() {
       animate={{ opacity: 1 }}
     >
       <RankCategory job={job} setJob={setJob} category={category} />
-      <div className="flex items-center flex-col">
-        {data &&
-          data.rows &&
-          data.rows.slice(offset, offset + limit).map((item, secondIdx) => {
-            return (
-              <CharacterRankBox
-                characterData={item}
-                key={secondIdx}
-                idx={secondIdx}
-                page={page}
-              />
-            )
-          })}
-      </div>
+      <Suspense fallback={<SkeletonComponent type="rank" />}>
+        <div className="flex items-center flex-col">
+          {data &&
+            data.rows &&
+            data.rows.slice(offset, offset + limit).map((item, secondIdx) => {
+              return (
+                <CharacterRankBox
+                  characterData={item}
+                  key={secondIdx}
+                  idx={secondIdx}
+                  page={page}
+                />
+              )
+            })}
+        </div>
+      </Suspense>
       <div className="flex items-center justify-center">
         {data && data.rows && (
           <PagenationArea

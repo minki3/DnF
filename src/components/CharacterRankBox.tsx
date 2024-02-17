@@ -1,7 +1,7 @@
 import { CharacterInformationType } from '@/service/types/type'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 interface Props {
   characterData: CharacterInformationType
