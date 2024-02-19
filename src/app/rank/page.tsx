@@ -21,7 +21,7 @@ export default function RankPage() {
               }}
               className={`${
                 open === item &&
-                ' font-bold border-b-2 border-black lg:pb-4 pb-2'
+                ' font-bold border-b-2 border-black dark:border-white  lg:pb-4 pb-2'
               }`}
             >
               {item}

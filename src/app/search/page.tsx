@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 import { getServerApi } from '@/service/api/getServerApi'
-import CharacterSearchResult from '@/components/CharacterSearchResult'
 import CharactersNotFound from '@/components/CharactersNotFound'
 import SkeletonComponent from '@/components/skeleton/SkeletonComponent'
 
