@@ -10,7 +10,7 @@ export default function SkeletonItem({ type }: Props) {
     <>
       {type === 'search' && (
         <div className="border px-4 pb-6 pt-4 w-[full] flex items-center justify-center flex-col rounded-lg">
-          <div className="w-[300px] h-[300px] bg-gray-500 opacity-10 rounded-lg mb-7" />
+          <div className="w-[100px] h-[150px] lg:w-[300px] lg:h-[300px] bg-gray-500 opacity-10 rounded-lg mb-7" />
           <div className="w-[100px] h-[20px] bg-gray-500 opacity-10 rounded-lg mb-2" />
           <div className="w-[100px] h-[20px] bg-gray-500 opacity-10 rounded-lg mb-2" />
           <div className="w-[100px] h-[20px] bg-gray-500 opacity-10 rounded-lg mb-2" />

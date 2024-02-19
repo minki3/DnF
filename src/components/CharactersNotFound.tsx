@@ -8,7 +8,7 @@ export default function CharactersNotFound() {
 
       <Link href="/">
         <span className=" font-thin underline-offset-[1px]">
-          {`-->`} 메인페이지로 돌아가기
+          메인페이지로 돌아가기
         </span>
       </Link>
     </div>

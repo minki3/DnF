@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import { getCharacterInformation } from '@/service/api/getCharacterInformation'
 import { getServerApi } from '@/service/api/getServerApi'
-import CharacterSearchResult from '@/components/CharacterSearchResult'
 import CharactersNotFound from '@/components/CharactersNotFound'
 import SkeletonComponent from '@/components/skeleton/SkeletonComponent'
 
@@ -18,6 +17,7 @@ export default async function SearchPage({ searchParams }: Props) {
     searchParams.server,
     searchParams.nickname,
   )
+  if (characterData.error) return <CharactersNotFound />
 
   const filterData = characterData.rows
     .filter((item: any) => item.fame !== null)
