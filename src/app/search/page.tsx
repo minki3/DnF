@@ -18,6 +18,7 @@ export default async function SearchPage({ searchParams }: Props) {
     searchParams.server,
     searchParams.nickname,
   )
+  if (characterData.error) return <CharactersNotFound />
 
   const filterData = characterData.rows
     .filter((item: any) => item.fame !== null)
