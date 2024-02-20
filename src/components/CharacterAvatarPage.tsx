@@ -46,7 +46,7 @@ export default function CharacterAvatarPage({ characterAvatar }: Props) {
                     <span className={`${rarityColor(itemRarity)}`}>
                       {itemName}
                     </span>
-                    <span className=" text-black text-[6px] lg:text-[12px]">
+                    <span className=" text-black text-[6px] lg:text-[12px] dark:text-white">
                       {clone.itemName}
                     </span>
                   </div>

@@ -2,7 +2,7 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
 import { idChange, reset } from '@/lib/redux/features/characterServerState'
-import { saveSearch } from '@/lib/redux/features/beforeSearchState'
+
 import { useRouter } from 'next/navigation'
 
 interface Props {
@@ -25,15 +25,29 @@ export default function NickNameInput({ large }: Props) {
     )
   }
 
+  const saveLocalStorage = () => {
+    const savedData = localStorage.getItem('save')
+    if (savedData) {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          ...JSON.parse(savedData),
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    } else {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    }
+  }
+
   const navigate = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       SendQuery()
-      dispatch(
-        saveSearch({
-          server: userData.value.server,
-          id: userData.value.id,
-        }),
-      )
     }
   }
 
@@ -45,6 +59,7 @@ export default function NickNameInput({ large }: Props) {
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
           navigate(e)
+          saveLocalStorage()
         }
       }}
       className={`${

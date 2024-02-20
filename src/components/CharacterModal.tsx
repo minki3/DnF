@@ -47,7 +47,7 @@ export default function CharacterModal({
               onClick={() => setOpen(item.state)}
               className={`${
                 open === item.state &&
-                'font-bold border-b-2 border-black pb-2 lg:pb-4'
+                'font-bold border-b-2 border-black pb-2 lg:pb-4 dark:border-white'
               }`}
             >
               {item.category}
