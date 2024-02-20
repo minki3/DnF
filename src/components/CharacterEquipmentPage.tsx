@@ -101,8 +101,8 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
                               amplificationName &&
                               amplificationName.includes('차원')
                                 ? ' text-pink-400'
-                                : 'text-black'
-                            }`}
+                                : 'text-black dark:text-white'
+                            } `}
                           >
                             +{reinforce}
                           </span>

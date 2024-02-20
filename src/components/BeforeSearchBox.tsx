@@ -28,7 +28,9 @@ export default function BeforeSearchBox() {
     }
   }
 
-  const [searchHistory, setSearchHistory] = useState<any[]>([])
+  const [searchHistory, setSearchHistory] = useState<
+    { server: string; id: string }[]
+  >([])
 
   useEffect(() => {
     const savedData = localStorage.getItem('save')
