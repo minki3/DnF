@@ -1,13 +1,8 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks'
-import { deleteSearch } from '@/lib/redux/features/beforeSearchState'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function BeforeSearchBox() {
-  const saveServer = useAppSelector((state) => state.saveSearch)
-  const dispatch = useAppDispatch()
-
   const serverName = (server?: string) => {
     switch (server) {
       case 'all':
@@ -29,28 +24,26 @@ export default function BeforeSearchBox() {
       case 'bakal':
         return '바칼'
       default:
-        return <></>
+        return ''
     }
   }
 
-  // useEffect(() => {
-  //   console.log('1')
+  const [searchHistory, setSearchHistory] = useState<any[]>([])
 
-  //   // saveServer.value 배열의 내용을 복사하여 새로운 배열을 만듦
-  //   const newData = saveServer.value.map((item) => ({
-  //     server: item.server,
-  //     id: item.id,
-  //   }))
+  useEffect(() => {
+    const savedData = localStorage.getItem('save')
+    if (savedData) {
+      setSearchHistory(JSON.parse(savedData))
+    }
+  }, [])
 
-  //   localStorage.setItem('saveServer', JSON.stringify({ ...newData, newData }))
-  // }, [saveServer.value])
-
-  const newData = saveServer.value.map((item) => ({
-    server: item.server,
-    id: item.id,
-  }))
-
-  localStorage.setItem('saveServer', JSON.stringify(newData))
+  const handleDelete = (idx: number) => {
+    const updatedSearchHistory = searchHistory.filter(
+      (_, sidx: number) => sidx !== idx,
+    )
+    setSearchHistory(updatedSearchHistory)
+    localStorage.setItem('save', JSON.stringify(updatedSearchHistory))
+  }
 
   return (
     <div className="w-[250px] h-[300px] lg:w-[500px] lg:h-[300px] border rounded-lg mt-10 p-4 flex items-center flex-col text-[10px] lg:text-base ">
@@ -58,39 +51,35 @@ export default function BeforeSearchBox() {
         최근 검색
       </span>
       <ul className="w-full overflow-scroll">
-        {saveServer.value.length !== 0 &&
-          saveServer.value.map((item, idx) => {
-            return (
-              <li key={idx} className="flex mb-3 cursor-pointer">
-                <span className=" basis-1/3">
-                  <span className="border p-1 rounded-md font-thin">
-                    {serverName(item.server)}
-                  </span>
+        {searchHistory.map(
+          (item: { server: string; id: string }, idx: number) => (
+            <li key={idx} className="flex mb-3 cursor-pointer">
+              <span className="basis-1/3">
+                <span className="border p-1 rounded-md font-thin">
+                  {serverName(item.server)}
                 </span>
-                <Link
-                  href={{
-                    pathname: '/search',
-                    query: {
-                      server: item.server,
-                      nickname: item.id,
-                    },
-                  }}
-                  className=" basis-1/3 text-center"
-                >
-                  <span className=" basis-1/3 text-center">{item.id}</span>
-                </Link>
-                <span className=" basis-1/3 text-end">
-                  <span
-                    onClick={() => {
-                      dispatch(deleteSearch(item))
-                    }}
-                  >
-                    x
-                  </span>
-                </span>
-              </li>
-            )
-          })}
+              </span>
+              <Link
+                href={{
+                  pathname: '/search',
+                  query: {
+                    server: item.server,
+                    nickname: item.id,
+                  },
+                }}
+                className="basis-1/3 text-center"
+              >
+                <span className="basis-1/3 text-center">{item.id}</span>
+              </Link>
+              <span
+                className="basis-1/3 text-end"
+                onClick={() => handleDelete(idx)}
+              >
+                x
+              </span>
+            </li>
+          ),
+        )}
       </ul>
     </div>
   )

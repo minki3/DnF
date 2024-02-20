@@ -24,6 +24,26 @@ export default function ServerSelectBox({ serverData, large }: Props) {
     dispatch(serverChange(selectedServer))
   }
   console.log(userData)
+
+  const saveLocalStorage = () => {
+    const savedData = localStorage.getItem('save')
+    if (savedData) {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          ...JSON.parse(savedData),
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    } else {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    }
+  }
   return (
     <div className="flex items-center justify-evenly">
       <select
@@ -62,6 +82,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
             }),
           )
           dispatch(reset())
+          saveLocalStorage()
         }}
       >
         <div className="w-[25px] h-[25px] lg:w-[40px] lg:h-[40px]  flex justify-center items-center hover:border  hover:rounded-lg">

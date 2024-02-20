@@ -25,9 +25,30 @@ export default function NickNameInput({ large }: Props) {
     )
   }
 
+  const saveLocalStorage = () => {
+    const savedData = localStorage.getItem('save')
+    if (savedData) {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          ...JSON.parse(savedData),
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    } else {
+      localStorage.setItem(
+        'save',
+        JSON.stringify([
+          { server: userData.value.server, id: userData.value.id },
+        ]),
+      )
+    }
+  }
+
   const navigate = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       SendQuery()
+      saveLocalStorage()
       dispatch(
         saveSearch({
           server: userData.value.server,
