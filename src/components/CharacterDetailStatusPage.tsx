@@ -11,7 +11,7 @@ export default function CharacterStatusPage({ characterStatus }: Props) {
   if (characterStatus.length === 0) return <InformationNotFound />
 
   const filterData = characterStatus.filter((_, idx: number) => {
-    return idx < 33
+    return idx >= 33
   })
 
   return (
