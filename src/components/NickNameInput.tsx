@@ -53,6 +53,7 @@ export default function NickNameInput({ large }: Props) {
 
   return (
     <input
+      value={userData.value.id}
       onChange={(e) => {
         NickNameHandler(e)
       }}
@@ -60,6 +61,7 @@ export default function NickNameInput({ large }: Props) {
         if (e.key === 'Enter') {
           navigate(e)
           saveLocalStorage()
+          dispatch(reset())
         }
       }}
       className={`${

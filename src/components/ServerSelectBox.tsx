@@ -47,6 +47,7 @@ export default function ServerSelectBox({ serverData, large }: Props) {
   return (
     <div className="flex items-center justify-evenly">
       <select
+        value={userData.value.server}
         className=" rounded-lg lg:p-[10px] mr-2 text-[10px] lg:text-lg"
         onChange={serverHandler}
       >
