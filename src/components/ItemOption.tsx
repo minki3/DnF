@@ -1,3 +1,4 @@
+import MotionComponent from '@/components/MotionComponent'
 import { CustomOptionType, FixedOptionType } from '@/service/types/type'
 import React from 'react'
 
@@ -18,7 +19,7 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
   return (
     <>
       {(fixedOption || customOption) && (
-        <div className="border lg:px-4 lg:pt-4 mt-2 px-2 pt-2 absolute bg-blue-300 left-[50%]">
+        <MotionComponent className="mt-2">
           {fixedOption && (
             <ul className="">
               {options &&
@@ -59,7 +60,7 @@ export default function ItemOption({ fixedOption, customOption }: Props) {
                 })}
             </ul>
           )}
-        </div>
+        </MotionComponent>
       )}
     </>
   )

@@ -12,6 +12,7 @@ import CharacterEquipmentPage from '@/components/CharacterEquipmentPage'
 import CharacterAvatarPage from '@/components/CharacterAvatarPage'
 import CharacterCreaturePage from '@/components/CharacterCreaturePage'
 import CharacterBuffStatus from '@/components/CharacterBuffStatus'
+import CharacterDeatailStatusPage from '@/components/CharacterDetailStatusPage'
 
 interface Props {
   characterStatus: CharacterStatusType[]
@@ -23,6 +24,7 @@ interface Props {
 
 const Categories = [
   { category: '스 텟', state: 'status' },
+  { category: '세부스텟', state: 'detailStatus' },
   { category: '장 비', state: 'equipment' },
   { category: '자버프', state: 'buff' },
   { category: '아바타', state: 'avatar' },
@@ -59,6 +61,9 @@ export default function CharacterModal({
       <div className="p-4">
         {open === 'status' && (
           <CharacterStatusPage characterStatus={characterStatus} />
+        )}
+        {open === 'detailStatus' && (
+          <CharacterDeatailStatusPage characterStatus={characterStatus} />
         )}
         {open === 'equipment' && (
           <CharacterEquipmentPage characterEquipment={characterEquipment} />
