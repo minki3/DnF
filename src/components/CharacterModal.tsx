@@ -43,10 +43,11 @@ export default function CharacterModal({
   return (
     <>
       <div className="flex gap-[20px] text-[12px] md:text-sm lg:text-lg cursor-pointer justify-center mt-7 ">
-        {Categories.map((item) => {
+        {Categories.map((item, idx) => {
           return (
             <div
               onClick={() => setOpen(item.state)}
+              key={idx}
               className={`${
                 open === item.state &&
                 'font-bold border-b-2 border-black pb-2 lg:pb-4 dark:border-white'
