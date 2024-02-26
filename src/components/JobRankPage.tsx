@@ -54,6 +54,7 @@ export default function AttackerRankPage({ isBuff, category }: Props) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [page])
+
   return (
     <motion.div
       className="flex gap-5 flex-col p-2"

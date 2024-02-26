@@ -65,9 +65,11 @@ export default function CharacterInformationHeader({
               <span className=" font-thin">버프 정보 :</span>
               <span>{characterBuffStatus.buff.skillInfo.name}</span>
               <span>+{characterBuffStatus.buff.skillInfo.option.level}</span>
-              <span>
-                {characterBuffStatus.buff.skillInfo.option.values[1]}%
-              </span>
+              {characterBuffStatus.buff.skillInfo.option.values[1] && (
+                <span>
+                  {characterBuffStatus.buff.skillInfo.option.values[1]}%
+                </span>
+              )}
             </span>
           )}
         </div>
