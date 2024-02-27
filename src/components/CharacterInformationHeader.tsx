@@ -29,7 +29,7 @@ export default function CharacterInformationHeader({
     guildId,
     guildName,
   } = characterInformationDetail
-
+  console.log(characterBuffStatus?.buff.skillInfo.option.values[1])
   return (
     <div className="flex justify-center items-center">
       <div className="flex items-center gap-6 sm:flex-col">
@@ -65,9 +65,11 @@ export default function CharacterInformationHeader({
               <span className=" font-thin">버프 정보 :</span>
               <span>{characterBuffStatus.buff.skillInfo.name}</span>
               <span>+{characterBuffStatus.buff.skillInfo.option.level}</span>
-              <span>
-                {characterBuffStatus.buff.skillInfo.option.values[1]}%
-              </span>
+              {characterBuffStatus.buff.skillInfo.option.values[1] && (
+                <span>
+                  {characterBuffStatus.buff.skillInfo.option.values[1]}%
+                </span>
+              )}
             </span>
           )}
         </div>

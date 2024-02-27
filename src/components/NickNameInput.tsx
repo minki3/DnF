@@ -45,12 +45,6 @@ export default function NickNameInput({ large }: Props) {
     }
   }
 
-  const navigate = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      SendQuery()
-    }
-  }
-
   return (
     <input
       value={userData.value.id}
@@ -58,10 +52,11 @@ export default function NickNameInput({ large }: Props) {
         NickNameHandler(e)
       }}
       onKeyDown={(e) => {
+        if (e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229) return
         if (e.key === 'Enter') {
-          navigate(e)
           saveLocalStorage()
           dispatch(reset())
+          SendQuery()
         }
       }}
       className={`${
