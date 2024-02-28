@@ -18,10 +18,10 @@ export default function SkeletonItem({ type }: Props) {
         </div>
       )}
       {type === 'rank' && (
-        <div className="flex items-center border w-full p-2 m-2 lg:m-6 sm:h-[100px]">
+        <div className="flex items-center border w-full p-2 m-2 lg:m-6 sm:h-[100px] md:h-[170px]">
           <div className=" basis-1/4 flex items-center">
             <div className="lg:w-[30px] lg:h-[20px] w-[20px] h-[10px] bg-gray-500 opacity-10 rounded-lg mr-2" />
-            <div className="lg:w-[250px] lg:h-[250px] w-[50px] h-[50px] bg-gray-500 opacity-10 rounded-lg" />
+            <div className="lg:w-[250px] lg:h-[250px] w-[50px] h-[50px] md:w-[100px] md:h-[100px] bg-gray-500 opacity-10 rounded-lg" />
           </div>
           <div className=" basis-1/4 ">
             <div className="lg:w-[200px] lg:h-[20px] w-[50px] h-[10px] bg-gray-500 opacity-10 rounded-lg mb-2" />
