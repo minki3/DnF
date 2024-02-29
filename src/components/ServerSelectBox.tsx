@@ -23,7 +23,6 @@ export default function ServerSelectBox({ serverData, large }: Props) {
     const selectedServer = event.target.value
     dispatch(serverChange(selectedServer))
   }
-  console.log(userData)
 
   const saveLocalStorage = () => {
     const savedData = localStorage.getItem('save')

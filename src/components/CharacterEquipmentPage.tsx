@@ -35,7 +35,7 @@ export default function CharacterEquipmentPage({ characterEquipment }: Props) {
         return ''
     }
   }
-  console.log(characterEquipment)
+
   return (
     <motion.div
       className="flex justify-center cursor-default"

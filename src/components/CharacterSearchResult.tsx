@@ -15,7 +15,6 @@ export default async function CharacterSearchResult({
   charactersData,
   serverData,
 }: Props) {
-  console.log(charactersData)
   const filterServer = (serverId: string) => {
     return serverData.rows.filter(
       (data: { serverId: string; serverName: string }) => {
